@@ -2,6 +2,9 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
+		<g:javascript>
+		window.location = '<g:createLink controller="home" />'
+		</g:javascript>
 		<title>Welcome to Grails</title>
 		<style type="text/css" media="screen">
 			#status {
