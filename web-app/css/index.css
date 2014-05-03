@@ -11,3 +11,8 @@ header {
 	border-width:5px;
 	margin-size:10px;
 }
+
+body {
+	padding:10px;
+	background-color:blue;
+}

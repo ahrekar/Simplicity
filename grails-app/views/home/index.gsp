@@ -14,5 +14,19 @@
 	</ul>
 	</header>
 
+	<body>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				Course 1
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				Course 2
+			</div>
+		</div>
+	</body>
+
 
 </html>
