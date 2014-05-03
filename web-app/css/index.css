@@ -23,5 +23,7 @@ h1 {
 
 .card-div {
 	padding:10px;
+	padding-top:15px;
+	padding-bottom:1px;
 	background-color: #002244;
 }
