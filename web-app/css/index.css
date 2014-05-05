@@ -27,3 +27,18 @@ h1 {
 	padding-bottom:1px;
 	background-color: #002244;
 }
+
+.card-div-left {
+	padding:10px;
+	margin-right:50%;
+	padding-top:15px;
+	padding-bottom:1px;
+	background-color: #002244;
+}
+.card-div-right {
+	padding:10px;
+	margin-left:50%;
+	padding-top:15px;
+	padding-bottom:1px;
+	background-color: #002244;
+}
