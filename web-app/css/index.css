@@ -1,31 +1,44 @@
-body {
-	background-color: #002244;
+#body {
+background-color: #002244;
+height:500px;
 }
 header {
-	background-color: #fecb00;
-	color: #002244;
-	padding:0px;
-	margin:0px;
-	height:62px;
+background-color: #fecb00;
+color: #002244;
+padding:0px;
+margin:0px;
+height:62px;
 }
 h1 {
-	float:left;
-	padding-left:50px;
-	position:relative;
-	top:-8px;
+float:left;
+padding-left:50px;
+position:relative;
+top:-8px;
 }
 #navbar {
-	float:left;
-	padding-left:20px;
-	position:relative;
-	top:20px;
+float:left;
+padding-left:20px;
+position:relative;
+top:20px;
 }
 
 .card-div {
-	padding:10px;
-	padding-top:15px;
-	padding-bottom:1px;
-	background-color: #002244;
+padding:10px;
+padding-top:15px;
+padding-bottom:1px;
+background-color: #002244;
+
+}
+.panel-default{
+	width:49%;
+	float:left;
+	margin-right:13px;
+	margin-bottom:50px;
+}
+#go1 {
+	text-align:center;
+}
+}
 }
 
 .card-div-left {
