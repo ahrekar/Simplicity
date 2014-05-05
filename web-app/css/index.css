@@ -35,8 +35,9 @@ background-color: #002244;
 	margin-right:13px;
 	margin-bottom:50px;
 }
-#go1 {
+#go1, #go2, #go3, #go4, #go5 {
 	text-align:center;
+	cursor: pointer; cursor: hand;
 }
 }
 }

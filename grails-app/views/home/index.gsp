@@ -14,12 +14,31 @@
  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script>
 $(document).ready(function(){
+	var go1Expanded = false;
+	var expanded = [false, false, false];
 	$( "#go1" ).click(function() {
-		$( "#block1" )
-		.animate({ width: "100%",height:"90%" }, { queue: false, duration: 3000 })
-		$( "#block1" )
-		.animate({ height: "90%" }, { queue: false, duration: 3000 })
-		});
+			buttFunc(1);
+	});
+	$( "#go2" ).click(function() {
+		buttFunc(2);
+	});
+	  function buttFunc(index)
+		{
+			if(expanded[index] == false)
+			{
+			$( "#block" + index )
+				.animate({ width: "100%" }, { queue: false, duration: 1000 })
+				expanded[index] = true;
+			$( "#go" + index ).text("Show Less..")
+			}
+		else
+			{
+			$( "#block" + index )
+				.animate({ width: "49%" }, { queue: false, duration: 1000 })
+				expanded[index] = false;	
+			$( "#go" + index ).text("Show More..")
+			}
+		}
 });
 </script>
 </head>
@@ -56,7 +75,7 @@ $(document).ready(function(){
 			<div class="panel-footer" id="go1">Show More...</div>
 		</div>
 
-		<div class="panel panel-default" id="block1">
+		<div class="panel panel-default" id="block2">
 			<div class="panel-heading">
 				<h3 class="panel-title">UI Design</h3>
 			</div>
@@ -70,7 +89,7 @@ $(document).ready(function(){
 					<td>98%</td>
 				</tr>
 			</table>
-			<div class="panel-footer" id="go1">Show More...</div>
+			<div class="panel-footer" id="go2">Show More...</div>
 		</div>
 
 		<div class="panel panel-default">
