@@ -125,7 +125,6 @@ $(document).ready(function(){
         	<g:each in="${list}" var="assignment">
         		<tr>
             		<td>${assignment.name}</td>
-            		<td>${assignment.dateDue}</td>
         		</tr>
         	</g:each>
 			</table>
