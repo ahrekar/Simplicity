@@ -1,6 +1,6 @@
 package simplicity
 
-class Material {
+class Material extends Item {
 	Date uploadDate;
     static constraints = {
     }
