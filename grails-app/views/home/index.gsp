@@ -63,52 +63,52 @@ $(document).ready(function(){
 			</div>
 			<table class="table table-hover">
 				<tr>
-					<th>Assignment</th>
-					<th>Grade</th>
-				</tr>
-				<tr>
-					<td>Assigntment 1</td>
-					<td>98%</td>
-				</tr>
-				<tr>
-					<td>Assigntment 2</td>
-					<td>98%</td>
-				</tr>
-				<tr>
-					<td>Assigntment 3</td>
-					<td>98%</td>
-				</tr>
-				<tr>
-					<th>Assignment</th>
-					<th>Due Date</th>
+					<th>Assignments</th>
+					<th class="cell-right">Due Date</th>
 				</tr>
 				<tr>
 					<td>Assigntment 4</td>
-					<td>Tomorrow</td>
+					<td class="cell-right">Tomorrow</td>
 				</tr>
 				<tr>
 					<td>Assigntment 5</td>
-					<td>May 12</td>
+					<td class="cell-right">May 12</td>
 				</tr>
 				<tr>
 					<td>Assigntment 6</td>
-					<td>May 16</td>
+					<td class="cell-right">May 16</td>
+				</tr>
+				<tr >
+					<th>Grades</th>
+					<th class="cell-right">Grade</th>
+				</tr>
+				<tr >
+					<td>Assigntment 3</td>
+					<td class="cell-right">98%</td>
+				</tr>
+				<tr>
+					<td>Assigntment 2</td>
+					<td class="cell-right">98%</td>
+				</tr>
+				<tr>
+					<td>Assigntment 1</td>
+					<td class="cell-right">98%</td>
 				</tr>
 				<tr>
 					<th>Materials</th>
-					<th>Upload Date</th>
+					<th class="cell-right">Upload Date</th>
 				</tr>
 				<tr>
 					<td>Syllabus</td>
-					<td>2/10</td>
+					<td class="cell-right">2/10</td>
 				</tr>
 				<tr>
 					<td>Design Principles Ch. 1</td>
-					<td>3/23</td>
+					<td class="cell-right">3/23</td>
 				</tr>
 				<tr>
 					<td>Java Swing Example</td>
-					<td>3/25</td>
+					<td class="cell-right">3/25</td>
 				</tr>
 			</table>
 			<div class="panel-footer" id="go2">Show More...</div>
