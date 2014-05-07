@@ -22,7 +22,7 @@ position:relative;
 top:20px;
 }
 
-.card-div {
+#card-div {
 padding:10px;
 padding-top:15px;
 padding-bottom:1px;
@@ -30,8 +30,7 @@ background-color: #002244;
 
 }
 .panel-default{
-	width:49%;
-	float:left;
+	width:100%;
 	margin-right:13px;
 	margin-bottom:50px;
 }
@@ -48,4 +47,12 @@ th {
 	text-align:right;
 }
 
-
+@media (min-width: 700px){
+	.panel-default br{
+		clear: both;
+	}
+	.panel-default{
+		width:45%;
+		float:left;
+	}
+}

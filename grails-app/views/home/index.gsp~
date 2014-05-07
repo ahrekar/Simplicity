@@ -56,7 +56,7 @@ $(document).ready(function(){
 		</div>
 	</header>
 
-	<div class="card-div">
+	<div id="card-div">
 		<div class="panel panel-default" id="block2">
 			<div class="panel-heading">
 				<h3 class="panel-title">UI Design</h3>
