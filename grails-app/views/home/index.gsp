@@ -14,12 +14,30 @@
  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script>
 $(document).ready(function(){
+	var expanded = [false, false, false];
 	$( "#go1" ).click(function() {
-		$( "#block1" )
-		.animate({ width: "100%",height:"90%" }, { queue: false, duration: 3000 })
-		$( "#block1" )
-		.animate({ height: "90%" }, { queue: false, duration: 3000 })
-		});
+			buttFunc(1);
+	});
+	$( "#go2" ).click(function() {
+		buttFunc(2);
+	});
+	  function buttFunc(index)
+		{
+			if(expanded[index] == false)
+			{
+			$( "#block" + index )
+				.animate({ width: "100%" }, { queue: false, duration: 1000 })
+				expanded[index] = true;
+			$( "#go" + index ).text("Show Less..")
+			}
+		else
+			{
+			$( "#block" + index )
+				.animate({ width: "49%" }, { queue: false, duration: 1000 })
+				expanded[index] = false;	
+			$( "#go" + index ).text("Show More..")
+			}
+		}
 });
 </script>
 </head>
@@ -39,7 +57,7 @@ $(document).ready(function(){
 	</header>
 
 	<div class="card-div">
-		<div class="panel panel-default" id="block1">
+		<div class="panel panel-default" id="block2">
 			<div class="panel-heading">
 				<h3 class="panel-title">UI Design</h3>
 			</div>
@@ -51,11 +69,50 @@ $(document).ready(function(){
 				<tr>
 					<td>Assigntment 1</td>
 					<td>98%</td>
+				</tr>
+				<tr>
+					<td>Assigntment 2</td>
+					<td>98%</td>
+				</tr>
+				<tr>
+					<td>Assigntment 3</td>
+					<td>98%</td>
+				</tr>
+				<tr>
+					<th>Assignment</th>
+					<th>Due Date</th>
+				</tr>
+				<tr>
+					<td>Assigntment 4</td>
+					<td>Tomorrow</td>
+				</tr>
+				<tr>
+					<td>Assigntment 5</td>
+					<td>May 12</td>
+				</tr>
+				<tr>
+					<td>Assigntment 6</td>
+					<td>May 16</td>
+				</tr>
+				<tr>
+					<th>Materials</th>
+					<th>Upload Date</th>
+				</tr>
+				<tr>
+					<td>Syllabus</td>
+					<td>2/10</td>
+				</tr>
+				<tr>
+					<td>Design Principles Ch. 1</td>
+					<td>3/23</td>
+				</tr>
+				<tr>
+					<td>Java Swing Example</td>
+					<td>3/25</td>
 				</tr>
 			</table>
-			<div class="panel-footer" id="go1">Show More...</div>
+			<div class="panel-footer" id="go2">Show More...</div>
 		</div>
-
 		<div class="panel panel-default" id="block1">
 			<div class="panel-heading">
 				<h3 class="panel-title">UI Design</h3>
@@ -65,10 +122,12 @@ $(document).ready(function(){
 					<th>Assignment</th>
 					<th>Grade</th>
 				</tr>
-				<tr>
-					<td>Assigntment 1</td>
-					<td>98%</td>
-				</tr>
+        	<g:each in="${list}" var="assignment">
+        		<tr>
+            		<td>${assignment.name}</td>
+            		<td>${assignment.dateDue}</td>
+        		</tr>
+        	</g:each>
 			</table>
 			<div class="panel-footer" id="go1">Show More...</div>
 		</div>
