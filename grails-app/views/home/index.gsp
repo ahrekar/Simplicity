@@ -122,10 +122,12 @@ $(document).ready(function(){
 					<th>Assignment</th>
 					<th>Grade</th>
 				</tr>
-				<tr>
-					<td>Assigntment 1</td>
-					<td>98%</td>
-				</tr>
+        	<g:each in="${list}" var="assignment">
+        		<tr>
+            		<td>${assignment.name}</td>
+            		<td>${assignment.dateDue}</td>
+        		</tr>
+        	</g:each>
 			</table>
 			<div class="panel-footer" id="go1">Show More...</div>
 		</div>

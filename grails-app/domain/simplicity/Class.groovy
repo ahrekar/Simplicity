@@ -1,7 +1,8 @@
 package simplicity
 
 class Class {
-	ArrayList<Item> items = new ArrayList()
+	static hasMany = [items : Item]
+	String name
     static constraints = {
     }
 }
