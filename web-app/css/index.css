@@ -2,7 +2,7 @@
 background-color: #002244;
 height:500px;
 }
-header {
+.top{
 background-color: #fecb00;
 color: #002244;
 padding:0px;
@@ -22,7 +22,7 @@ position:relative;
 top:20px;
 }
 
-#card-div {
+.card-div {
 padding:10px;
 padding-top:15px;
 padding-bottom:1px;
@@ -47,11 +47,82 @@ th {
 	text-align:right;
 }
 
-@media (min-width: 700px){
-	.panel-default br{
+.tabs{
+    width:100%;
+    display:inline-block; 
+}
+
+/*The tab links*/ 
+
+    .tab-links:after {
+        display:block; 
+        clear:both;
+        content:""; 
+    } 
+
+    /*the positioning of the tabs with margins*/
+    .tab-links li {
+        margin:0px 5px;
+        float:right; 
+        list-style:none;
+		position:relative;
+		top:-59px; 
+    } 
+
+        .tab-links a{
+            padding:9px 15px; 
+            display:inline-block; 
+            border-radius:3px 3px 3px 3px; 
+            background:#FFF; /*slate blue*/
+            font-size:16px; 
+            font-weight:600; 
+            color:#4c4c4c;
+            transition:all linear 0.15s; 
+            text-decoration:none;
+            
+        }
+
+        .tab-links a:hover{
+            background:#a7cce5
+            text-decoration:none;
+        }
+    
+    /*This will change settings for the individual tabs I have them set to black text with white background but both can be changed*/
+    li.active a, li.active a:hover{
+       /* background:#FFF; /*this will change the background color of the active tab*/
+        color:#000000;
+		text-decoration:none;
+    }
+    
+    /*this is where you can change the settings of the tab contents, this is where is set the background colour to a very light blue*/
+    .tab-content{
+        padding:15px;
+        border-radius:6px;
+		position:relative;
+		top: -40px;
+        box-shadow:-1px 1px 1px rgba(0,0,0,0.15); 
+       /* background:#6495ED;*/
+    }
+
+        .tab{
+            display:none;
+        }
+
+        .tab.active{
+            display:block; 
+        } 
+/*To get the tabs working I changed the of the course boxes from "block1" and "block2" to Overview, Materials, etc. That 
+is why the show more does not work. We need to fix this.*?
+
+/** AHREKAR 
+ * Here I am adding in the code for the breakpoints.
+ */
+
+@media (min-width: 700px){ /* If the window is larger than 700px */
+	.panel-default br{ /* Clear breakpoints */
 		clear: both;
 	}
-	.panel-default{
+	.panel-default{ /* Make the panels take up half the screen. */
 		width:45%;
 		float:left;
 	}
