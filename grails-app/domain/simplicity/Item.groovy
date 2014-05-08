@@ -3,6 +3,11 @@ package simplicity
 class Item {
 	String name;
 	String description;
-    static constraints = {
+    public Item(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
+	static constraints = {
     }
 }

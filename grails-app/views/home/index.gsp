@@ -65,65 +65,31 @@ $(document).ready(function(){
 			<li class="active"><a href="#Overview">Overview</a></li>
 
 		</ul>
-		<%--<g:if test="${classes}">--%>
+		<g:if test="${classes}">
 			<div class="card-div tab-content">
 			<div id="Overview" class="active tab">
+				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">UI Design</h3>
+						<h3 class="panel-title">${course.name}</h3>
 					</div>
 					<table class="table table-hover">
 						<tr>
 							<th>Assignments</th>
 							<th class="cell-right">Due Date</th>
 						</tr>
-						<tr>
-							<td>Assigntment 4</td>
-							<td class="cell-right">Tomorrow</td>
-						</tr>
-						<tr>
-							<td>Assigntment 5</td>
-							<td class="cell-right">May 12</td>
-						</tr>
-						<tr>
-							<td>Assigntment 6</td>
-							<td class="cell-right">May 16</td>
-						</tr>
 						<tr >
 							<th>Grades</th>
 							<th class="cell-right">Grade</th>
-						</tr>
-						<tr >
-							<td>Assigntment 3</td>
-							<td class="cell-right">98%</td>
-						</tr>
-						<tr>
-							<td>Assigntment 2</td>
-							<td class="cell-right">98%</td>
-						</tr>
-						<tr>
-							<td>Assigntment 1</td>
-							<td class="cell-right">98%</td>
 						</tr>
 						<tr>
 							<th>Materials</th>
 							<th class="cell-right">Upload Date</th>
 						</tr>
-						<tr>
-							<td>Syllabus</td>
-							<td class="cell-right">2/10</td>
-						</tr>
-						<tr>
-							<td>Design Principles Ch. 1</td>
-							<td class="cell-right">3/23</td>
-						</tr>
-						<tr>
-							<td>Java Swing Example</td>
-							<td class="cell-right">3/25</td>
-						</tr>
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
+				</g:each>
 			</div>
 			<div id="Materials" class="tab">
 				<div class="panel panel-default">
@@ -141,9 +107,20 @@ $(document).ready(function(){
 						</tr>
 					</g:each>
 					</table>
-					<div class="panel-footer" id="go1">Show More...</div>
+				<table class="table table-hover">
+					<tr>
+						<th>Assignment</th>
+						<th>Grade</th>
+					</tr>
+        		<g:each in="${classes}" var="classa">
+        			<tr>
+            			<td>${classa.name}</td>
+        			</tr>
+        		</g:each>
+				</table>
+				<div class="panel-footer" id="go1">Show More...</div>
 				</div>
-				</div>
+			</div>
 
 				<div class="panel panel-default tab" id="Assignments">
 					<div class="panel-heading">
@@ -153,7 +130,7 @@ $(document).ready(function(){
 				</div>
 				
 			</div>
-		<%--</g:if>--%>
+		</g:if>
 	</div>
 </body>
 

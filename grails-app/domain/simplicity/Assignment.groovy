@@ -1,8 +1,18 @@
 package simplicity
 
-class Assignment extends Item {
+import java.util.Date;
+
+class Assignment {
+	String name;
+	String description;
 	Date dateDue
 	int grade
-    static constraints = {
+	public Assignment(String name, String description, int grade, Date dateDue) {
+		this.name = name;
+		this.description = description;
+		this.grade = grade;
+		this.dateDue = dateDue;
+	}
+	static constraints = {
     }
 }
