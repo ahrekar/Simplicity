@@ -122,9 +122,9 @@ $(document).ready(function(){
 					<th>Assignment</th>
 					<th>Grade</th>
 				</tr>
-        	<g:each in="${list}" var="assignment">
+        	<g:each in="${classes}" var="classa">
         		<tr>
-            		<td>${assignment.name}</td>
+            		<td>${classa.name}</td>
         		</tr>
         	</g:each>
 			</table>
