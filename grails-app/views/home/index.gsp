@@ -78,6 +78,12 @@ $(document).ready(function(){
 							<th>Assignments</th>
 							<th class="cell-right">Due Date</th>
 						</tr>
+						<g:if test="${course.assignments}">
+							<g:each var="assignment" in="${course.assignments}">
+								<td>${assignment.name}</td>
+								<td class="cell-right">${assignment.dateDue}</td>
+							</g:each>
+						</g:if>
 						<tr >
 							<th>Grades</th>
 							<th class="cell-right">Grade</th>

@@ -9,4 +9,9 @@ class Class {
 	
     static constraints = {
     }
+
+	@Override
+	public String toString(){
+		return this.name
+	}
 }
