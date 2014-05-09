@@ -10,7 +10,7 @@ class Assignment {
 	Float grade
 	Float pointsPossible
 	Float pointsEarned
-public Assignment(String name, String description, Integer grade, Date dateDue, Float pointsPossible, Float pointsEarned) {
+	public Assignment(String name, String description, Integer grade, Date dateDue, Float pointsPossible, Float pointsEarned) {
 		this.name = name;
 		this.description = description;
 		this.grade = calcGrade(pointsPossible, pointsEarned);
