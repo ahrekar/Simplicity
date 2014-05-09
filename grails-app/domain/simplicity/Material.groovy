@@ -8,5 +8,6 @@ class Material{
     static constraints = {
 		name(blank: false)
 		description(maxSize: 4096, blank:false)
+
     }
 }
