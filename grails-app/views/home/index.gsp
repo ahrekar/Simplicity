@@ -80,16 +80,28 @@ $(document).ready(function(){
 						</tr>
 						<g:if test="${course.assignments}">
 							<g:each var="assignment" in="${course.assignments}">
+							<g:if test="${assignment.pointsEarned == null}">
 							<tr>
 								<td>${assignment.name}</td>
 								<td class="cell-right">${assignment.dateDue}</td>
 							</tr>
+							</g:if>
 							</g:each>
 						</g:if>
 						<tr >
 							<th>Grades</th>
 							<th class="cell-right">Grade</th>
 						</tr>
+						<g:if test="${course.assignments}">
+							<g:each var="assignment" in="${course.assignments}">
+							<g:if test="${assignment.pointsEarned != null}">
+							<tr>
+								<td>${assignment.name}</td>
+								<td class="cell-right">${assignment.dateDue}</td>
+							</tr>
+							</g:if>
+							</g:each>
+						</g:if>
 						<tr>
 							<th>Materials</th>
 							<th class="cell-right">Upload Date</th>

@@ -7,7 +7,7 @@ class Assignment {
 	String name;
 	String description;
 	Date dateDue
-	Integer grade
+	Float grade
 	Float pointsPossible
 	Float pointsEarned
 public Assignment(String name, String description, Integer grade, Date dateDue, Float pointsPossible, Float pointsEarned) {
@@ -30,9 +30,10 @@ public Assignment(String name, String description, Integer grade, Date dateDue, 
 		pointsPossible(blank: false)
 		pointsEarned(nullable: true)
     }
-	private float calcGrade(float possible, float earned)
+	private Float calcGrade(float possible, float earned)
 	{
-		this.grade = earned/possible	
+		Float grade = earned/possible
+		return grade
 	}
 }
 
