@@ -7,7 +7,7 @@ class Assignment {
 	String name;
 	String description;
 	Date dateDue
-	int grade
+	Integer grade
 	//float pointsPossible
 	//float pointsEarned
 	public Assignment(String name, String description, int grade, Date dateDue) {
@@ -24,7 +24,7 @@ class Assignment {
 		name(blank: false)
 		description(maxSize: 4096)
 		dateDue(blank: false)
-		grade(blank: true)
+		grade(nullable: true)
 		//pointsPossible()
 		//pointsEarned()
     }

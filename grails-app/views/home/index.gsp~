@@ -80,8 +80,10 @@ $(document).ready(function(){
 						</tr>
 						<g:if test="${course.assignments}">
 							<g:each var="assignment" in="${course.assignments}">
+							<tr>
 								<td>${assignment.name}</td>
 								<td class="cell-right">${assignment.dateDue}</td>
+							</tr>
 							</g:each>
 						</g:if>
 						<tr >
@@ -92,6 +94,12 @@ $(document).ready(function(){
 							<th>Materials</th>
 							<th class="cell-right">Upload Date</th>
 						</tr>
+						<g:if test="${course.materials}">
+							<g:each var="material" in="${course.materials}">
+								<td>${material.name}</td>
+								<td class="cell-right">${material.dateCreated}</td>
+							</g:each>
+						</g:if>
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
