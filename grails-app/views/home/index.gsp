@@ -110,13 +110,8 @@ $(document).ready(function(){
 						</tr>
 						<g:if test="${course.materials}">
 							<g:each var="material" in="${course.materials}">
-<<<<<<< HEAD
 								<td>>${material.name}</td>
 								<td class="cell-right">${material.getDate()}</td>
-=======
-								<td>${material.name}</td>
-								<td class="cell-right">${material.uploadDate}</td>
->>>>>>> 80ca20bc0079ecfdc050b13420f463637454628a
 							</g:each>
 						</g:if>
 					</table>

@@ -11,11 +11,8 @@ class Assignment {
 	Date dateDue
 	Float pointsPossible
 	Float pointsEarned
-<<<<<<< HEAD
+
 public Assignment(String name, String description, Date dateDue, Float pointsPossible, Float pointsEarned) {
-=======
-	public Assignment(String name, String description, Integer grade, Date dateDue, Float pointsPossible, Float pointsEarned) {
->>>>>>> 80ca20bc0079ecfdc050b13420f463637454628a
 		this.name = name;
 		this.description = description;
 		this.dateDue = dateDue;
