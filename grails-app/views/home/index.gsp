@@ -49,6 +49,9 @@ $(document).ready(function(){
 			}
 		}
 });
+function showDescription(id){
+	  $("#" + id).slideToggle("slow");
+	  }
 </script>
 </head>
 
@@ -84,7 +87,7 @@ $(document).ready(function(){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned == null}">
 							<tr>
-								<td>${assignment.name}</td>
+								<td><a onclick="showDescription('a${assignment.id}')" href="#">${assignment.name}</a><p id="a${assignment.id}" style="display:none">${assignment.description}</p></td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 							</g:if>
@@ -98,7 +101,8 @@ $(document).ready(function(){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned != null}">
 							<tr>
-								<td>${assignment.name}</td>
+								<td><a onclick="showDescription('a${assignment.id}')" href="#">${assignment.name}</a><p id="a${assignment.id}" style="display:none">${assignment.description}</p></td>
+	
 								<td class="cell-right">${assignment.calcGrade()}</td>
 							</tr>
 							</g:if>
@@ -111,8 +115,10 @@ $(document).ready(function(){
 						<g:if test="${course.materials}">
 						<tr>
 							<g:each var="material" in="${course.materials}">
-								<td>${material.name}</td>
+							<tr>
+								<td><a onclick="showDescription('m${material.id}')" href="#">${material.name}</a><p id="m${material.id}" style="display:none">${material.description}</p></td>
 								<td class="cell-right">${material.getDate()}</td>
+							</tr>
 							</g:each>
 						</tr>
 						</g:if>
