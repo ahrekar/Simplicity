@@ -65,8 +65,10 @@ $(document).ready(function(){
 			<li class="active"><a href="#Overview">Overview</a></li>
 
 		</ul>
+
 		<g:if test="${classes}">
 			<div class="card-div tab-content">
+
 			<div id="Overview" class="active tab">
 				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
@@ -108,8 +110,13 @@ $(document).ready(function(){
 						</tr>
 						<g:if test="${course.materials}">
 							<g:each var="material" in="${course.materials}">
+<<<<<<< HEAD
 								<td>>${material.name}</td>
 								<td class="cell-right">${material.getDate()}</td>
+=======
+								<td>${material.name}</td>
+								<td class="cell-right">${material.uploadDate}</td>
+>>>>>>> 80ca20bc0079ecfdc050b13420f463637454628a
 							</g:each>
 						</g:if>
 					</table>
@@ -117,43 +124,39 @@ $(document).ready(function(){
 				</div>
 				</g:each>
 			</div>
+
 			<div id="Materials" class="tab">
+				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">UI Design</h3>
+						<h3 class="panel-title">${course.name}</h3>
 					</div>
+
 					<table class="table table-hover">
 						<tr>
-							<th>Assignment</th>
-							<th>Grade</th>
+							<th>Material</th>
+							<th class="cell-right">Upload Date</th>
 						</tr>
-					<g:each in="${list}" var="assignment">
-						<tr>
-							<td>${assignment.name}</td>
-						</tr>
-					</g:each>
+						<g:each in="${course.materials}" var="material">
+							<tr>
+								<td>${material.name}</td>
+								<td class="cell-right">${material.uploadDate}</td>
+							</tr>
+						</g:each>
 					</table>
-				<table class="table table-hover">
-					<tr>
-						<th>Assignment</th>
-						<th>Grade</th>
-					</tr>
-        		<g:each in="${classes}" var="classa">
-        			<tr>
-            			<td>${classa.name}</td>
-        			</tr>
-        		</g:each>
-				</table>
-				<div class="panel-footer" id="go1">Show More...</div>
+					<div class="panel-footer" id="go1">Show More...</div>
 				</div>
-			</div>
+				</g:each>
+			</div> <%-- End Materials tab --%>
 
+			<div id="Assignments" class="tab">
 				<div class="panel panel-default tab" id="Assignments">
 					<div class="panel-heading">
 						<h3 class="panel-title">Accounting</h3>
 					</div>
 					<div class="panel-body">Course Content</div>
 				</div>
+			</div> <%-- End assignments tab --%>
 				
 			</div>
 		</g:if>
