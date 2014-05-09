@@ -7,14 +7,16 @@ class Assignment {
 	String name;
 	String description;
 	Date dateDue
-	int grade
-	//float pointsPossible
-	//float pointsEarned
+	Integer grade
+	Float pointsPossible
+	Float pointsEarned
 	public Assignment(String name, String description, int grade, Date dateDue) {
 		this.name = name;
 		this.description = description;
-		this.grade = grade;
+		this.grade = calcGrade(pointsPossible, pointsEarned);
 		this.dateDue = dateDue;
+		this.pointsPossible = pointsPossible;
+		this.pointsEarned = pointsEarned;
 	}
 	static mapping = {
 
@@ -24,8 +26,13 @@ class Assignment {
 		name(blank: false)
 		description(maxSize: 4096)
 		dateDue(blank: false)
-		grade(blank: true)
-		//pointsPossible()
-		//pointsEarned()
+		grade(nullable: true)
+		pointsPossible(blank: false)
+		pointsEarned(nullable: true)
     }
+	private float calcGrade(float possible, float earned)
+	{
+		this.grade = earned/possible	
+	}
 }
+
