@@ -113,18 +113,20 @@ function showDescription(id){
 							<th class="cell-right">Upload Date</th>
 						</tr>
 						<g:if test="${course.materials}">
+						<tr>
 							<g:each var="material" in="${course.materials}">
 							<tr>
 								<td><a onclick="showDescription('m${material.id}')" href="#">${material.name}</a><p id="m${material.id}" style="display:none">${material.description}</p></td>
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
 							</g:each>
+						</tr>
 						</g:if>
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
 				</g:each>
-			</div>
+			</div> <%-- End Overview Tab --%>
 
 			<div id="Materials" class="tab">
 				<g:each var="course" in="${classes}">
@@ -141,7 +143,7 @@ function showDescription(id){
 						<g:each in="${course.materials}" var="material">
 							<tr>
 								<td>${material.name}</td>
-								<td class="cell-right">${material.uploadDate}</td>
+								<td class="cell-right">${material.getDate()}</td>
 							</tr>
 						</g:each>
 					</table>
@@ -151,12 +153,57 @@ function showDescription(id){
 			</div> <%-- End Materials tab --%>
 
 			<div id="Assignments" class="tab">
-				<div class="panel panel-default tab" id="Assignments">
+				<g:each var="course" in="${classes}">
+				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Accounting</h3>
+						<h3 class="panel-title">${course.name}</h3>
 					</div>
-					<div class="panel-body">Course Content</div>
+					<table class="table table-hover">
+						<tr>
+							<th>Assignments</th>
+							<th class="cell-right">Due Date</th>
+						</tr>
+						<g:if test="${course.assignments}">
+							<g:each var="assignment" in="${course.assignments}">
+							<g:if test="${assignment.pointsEarned == null}">
+							<tr>
+								<td>${assignment.name}</td>
+								<td class="cell-right">${assignment.getDate()}</td>
+							</tr>
+							</g:if>
+							</g:each>
+						</g:if>
+					</table>
+					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
+				</g:each>
+			</div> <%-- End assignments tab --%>
+
+			<div id="Grades" class="tab">
+				<g:each var="course" in="${classes}">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">${course.name}</h3>
+					</div>
+					<table class="table table-hover">
+						<tr>
+							<th>Grades</th>
+							<th class="cell-right">Grade</th>
+						</tr>
+						<g:if test="${course.assignments}">
+							<g:each var="assignment" in="${course.assignments}">
+							<g:if test="${assignment.pointsEarned}">
+							<tr>
+								<td>${assignment.name}</td>
+								<td class="cell-right">${assignment.calcGrade()}</td>
+							</tr>
+							</g:if>
+							</g:each>
+						</g:if>
+					</table>
+					<div class="panel-footer" id="go2">Show More...</div>
+				</div>
+				</g:each>
 			</div> <%-- End assignments tab --%>
 				
 			</div>
