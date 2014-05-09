@@ -178,6 +178,33 @@ function showDescription(id){
 				</div>
 				</g:each>
 			</div> <%-- End assignments tab --%>
+
+			<div id="Grades" class="tab">
+				<g:each var="course" in="${classes}">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">${course.name}</h3>
+					</div>
+					<table class="table table-hover">
+						<tr>
+							<th>Grades</th>
+							<th class="cell-right">Grade</th>
+						</tr>
+						<g:if test="${course.assignments}">
+							<g:each var="assignment" in="${course.assignments}">
+							<g:if test="${assignment.pointsEarned}">
+							<tr>
+								<td>${assignment.name}</td>
+								<td class="cell-right">${assignment.calcGrade()}</td>
+							</tr>
+							</g:if>
+							</g:each>
+						</g:if>
+					</table>
+					<div class="panel-footer" id="go2">Show More...</div>
+				</div>
+				</g:each>
+			</div> <%-- End assignments tab --%>
 				
 			</div>
 		</g:if>

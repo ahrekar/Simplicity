@@ -49,6 +49,9 @@ $(document).ready(function(){
 			}
 		}
 });
+function showDescription(id){
+	  $("#" + id).slideToggle("slow");
+	  }
 </script>
 </head>
 
@@ -84,7 +87,7 @@ $(document).ready(function(){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned == null}">
 							<tr>
-								<td>${assignment.name}</td>
+								<td><a onclick="showDescription('a${assignment.id}')" href="#">${assignment.name}</a><p id="a${assignment.id}" style="display:none">${assignment.description}</p></td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 							</g:if>
@@ -98,7 +101,8 @@ $(document).ready(function(){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned != null}">
 							<tr>
-								<td>${assignment.name}</td>
+								<td><a onclick="showDescription('a${assignment.id}')" href="#">${assignment.name}</a><p id="a${assignment.id}" style="display:none">${assignment.description}</p></td>
+	
 								<td class="cell-right">${assignment.calcGrade()}</td>
 							</tr>
 							</g:if>
@@ -111,8 +115,10 @@ $(document).ready(function(){
 						<g:if test="${course.materials}">
 						<tr>
 							<g:each var="material" in="${course.materials}">
-								<td>${material.name}</td>
+							<tr>
+								<td><a onclick="showDescription('m${material.id}')" href="#">${material.name}</a><p id="m${material.id}" style="display:none">${material.description}</p></td>
 								<td class="cell-right">${material.getDate()}</td>
+							</tr>
 							</g:each>
 						</tr>
 						</g:if>
@@ -137,7 +143,7 @@ $(document).ready(function(){
 						<g:each in="${course.materials}" var="material">
 							<tr>
 								<td>${material.name}</td>
-								<td class="cell-right">${material.uploadDate}</td>
+								<td class="cell-right">${material.getDate()}</td>
 							</tr>
 						</g:each>
 					</table>
@@ -163,6 +169,33 @@ $(document).ready(function(){
 							<tr>
 								<td>${assignment.name}</td>
 								<td class="cell-right">${assignment.getDate()}</td>
+							</tr>
+							</g:if>
+							</g:each>
+						</g:if>
+					</table>
+					<div class="panel-footer" id="go2">Show More...</div>
+				</div>
+				</g:each>
+			</div> <%-- End assignments tab --%>
+
+			<div id="Grades" class="tab">
+				<g:each var="course" in="${classes}">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">${course.name}</h3>
+					</div>
+					<table class="table table-hover">
+						<tr>
+							<th>Grades</th>
+							<th class="cell-right">Grade</th>
+						</tr>
+						<g:if test="${course.assignments}">
+							<g:each var="assignment" in="${course.assignments}">
+							<g:if test="${assignment.pointsEarned}">
+							<tr>
+								<td>${assignment.name}</td>
+								<td class="cell-right">${assignment.calcGrade()}</td>
 							</tr>
 							</g:if>
 							</g:each>
