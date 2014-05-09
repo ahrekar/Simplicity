@@ -23,7 +23,6 @@ public Assignment(String name, String description, Date dateDue, Float pointsPos
 
 	}
 	static constraints = {
-		belongsTo(blank: false)
 		name(blank: false)
 		description(maxSize: 4096)
 		dateDue(blank: false)
