@@ -6,7 +6,6 @@ class HomeController {
 
 		classes = Class.findAll()
 
-		print(classes[0].name)
 		[classes : classes]
 	}
 }
