@@ -9,7 +9,6 @@ class Material{
 	String description
 	Date uploadDate;
     static constraints = {
-		name(blank: false)
 		description(maxSize: 4096, blank:false)
 
     }

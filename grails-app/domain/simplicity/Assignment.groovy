@@ -5,12 +5,12 @@ import java.text.SimpleDateFormat
 import java.util.Date;
 
 class Assignment {
-	static belongsTo = [course : Class]
+	static belongsTo = [course: Class]
 	String name;
 	String description;
-	Date dateDue
-	Float pointsPossible
-	Float pointsEarned
+	Date dateDue;
+	Float pointsPossible;
+	Float pointsEarned;
 
 public Assignment(String name, String description, Date dateDue, Float pointsPossible, Float pointsEarned) {
 		this.name = name;
@@ -23,7 +23,6 @@ public Assignment(String name, String description, Date dateDue, Float pointsPos
 
 	}
 	static constraints = {
-		belongsTo(blank: false)
 		name(blank: false)
 		description(maxSize: 4096)
 		dateDue(blank: false)
