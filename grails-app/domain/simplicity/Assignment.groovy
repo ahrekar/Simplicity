@@ -3,14 +3,14 @@ package simplicity
 import java.util.Date;
 
 class Assignment {
-	static belongsTo = [course: Class]
+	static belongsTo = [course : Class]
 	String name;
 	String description;
 	Date dateDue
 	Integer grade
 	Float pointsPossible
 	Float pointsEarned
-	public Assignment(String name, String description, int grade, Date dateDue) {
+public Assignment(String name, String description, Integer grade, Date dateDue, Float pointsPossible, Float pointsEarned) {
 		this.name = name;
 		this.description = description;
 		this.grade = calcGrade(pointsPossible, pointsEarned);
