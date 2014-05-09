@@ -1,5 +1,7 @@
 package simplicity
 
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.Date;
 
 class Assignment {
@@ -7,13 +9,11 @@ class Assignment {
 	String name;
 	String description;
 	Date dateDue
-	Float grade
 	Float pointsPossible
 	Float pointsEarned
-public Assignment(String name, String description, Integer grade, Date dateDue, Float pointsPossible, Float pointsEarned) {
+public Assignment(String name, String description, Date dateDue, Float pointsPossible, Float pointsEarned) {
 		this.name = name;
 		this.description = description;
-		this.grade = calcGrade(pointsPossible, pointsEarned);
 		this.dateDue = dateDue;
 		this.pointsPossible = pointsPossible;
 		this.pointsEarned = pointsEarned;
@@ -26,14 +26,20 @@ public Assignment(String name, String description, Integer grade, Date dateDue, 
 		name(blank: false)
 		description(maxSize: 4096)
 		dateDue(blank: false)
-		grade(nullable: true)
 		pointsPossible(blank: false)
 		pointsEarned(nullable: true)
     }
-	private Float calcGrade(float possible, float earned)
+	private String calcGrade()
 	{
-		Float grade = earned/possible
+		Float g = this.pointsEarned/this.pointsPossible*100
+		String grade = g + "%" 
 		return grade
+	}
+	private String getDate()
+	{
+		DateFormat date = new SimpleDateFormat("MM/dd/yyyy")
+		String reportDate = date.format(this.dateDue)
+		return reportDate
 	}
 }
 

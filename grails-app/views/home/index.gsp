@@ -83,7 +83,7 @@ $(document).ready(function(){
 							<g:if test="${assignment.pointsEarned == null}">
 							<tr>
 								<td>${assignment.name}</td>
-								<td class="cell-right">${assignment.dateDue}</td>
+								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 							</g:if>
 							</g:each>
@@ -97,7 +97,7 @@ $(document).ready(function(){
 							<g:if test="${assignment.pointsEarned != null}">
 							<tr>
 								<td>${assignment.name}</td>
-								<td class="cell-right">${assignment.dateDue}</td>
+								<td class="cell-right">${assignment.calcGrade()}</td>
 							</tr>
 							</g:if>
 							</g:each>
@@ -108,8 +108,8 @@ $(document).ready(function(){
 						</tr>
 						<g:if test="${course.materials}">
 							<g:each var="material" in="${course.materials}">
-								<td>${material.name}</td>
-								<td class="cell-right">${material.dateCreated}</td>
+								<td>>${material.name}</td>
+								<td class="cell-right">${material.getDate()}</td>
 							</g:each>
 						</g:if>
 					</table>
@@ -158,6 +158,7 @@ $(document).ready(function(){
 			</div>
 		</g:if>
 	</div>
+	
 </body>
 
 
