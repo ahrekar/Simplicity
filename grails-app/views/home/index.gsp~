@@ -50,7 +50,7 @@ $(document).ready(function(){
 		}
 });
 function showDescription(id){
-	  $("#" + id).slideToggle("slow");
+	  $("#" + id).slideToggle("fast");
 	  }
 </script>
 </head>
@@ -87,7 +87,7 @@ function showDescription(id){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned == null}">
 							<tr>
-								<td><a onclick="showDescription('a${assignment.id}')" href="#">${assignment.name}</a><p id="a${assignment.id}" style="display:none">${assignment.description}</p></td>
+								<td><a onclick="showDescription('oa${assignment.id}')" href="#">${assignment.name}</a><p id="oa${assignment.id}" style="display:none">${assignment.description}</p></td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 							</g:if>
@@ -116,7 +116,7 @@ function showDescription(id){
 						<tr>
 							<g:each var="material" in="${course.materials}">
 							<tr>
-								<td><a onclick="showDescription('m${material.id}')" href="#">${material.name}</a><p id="m${material.id}" style="display:none">${material.description}</p></td>
+								<td><a onclick="showDescription('om${material.id}')" href="#">${material.name}</a><p id="om${material.id}" style="display:none">${material.description}</p></td>
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
 							</g:each>
@@ -142,7 +142,7 @@ function showDescription(id){
 						</tr>
 						<g:each in="${course.materials}" var="material">
 							<tr>
-								<td>${material.name}</td>
+								<td><a onclick="showDescription('mm${material.id}')" href="#">${material.name}</a><p id="mm${material.id}" style="display:none">${material.description}</p></td>
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
 						</g:each>
@@ -167,7 +167,7 @@ function showDescription(id){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned == null}">
 							<tr>
-								<td>${assignment.name}</td>
+								<td><a onclick="showDescription('aa${assignment.id}')" href="#">${assignment.name}</a><p id="aa${assignment.id}" style="display:none">${assignment.description}</p></td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 							</g:if>
@@ -194,7 +194,7 @@ function showDescription(id){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned}">
 							<tr>
-								<td>${assignment.name}</td>
+								<td><a onclick="showDescription('ga${assignment.id}')" href="#">${assignment.name}</a><p id="ga${assignment.id}" style="display:none">${assignment.description}</p></td>
 								<td class="cell-right">${assignment.calcGrade()}</td>
 							</tr>
 							</g:if>
@@ -204,7 +204,7 @@ function showDescription(id){
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
 				</g:each>
-			</div> <%-- End assignments tab --%>
+			</div> <%-- End Grades tab --%>
 				
 			</div>
 		</g:if>
