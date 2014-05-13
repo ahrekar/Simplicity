@@ -31,6 +31,9 @@ $(document).ready(function(){
 	$( "#go2" ).click(function() {
 		buttFunc(2);
 	});
+	$("#close").click(function() {
+		$("#overlay").slideToggle("fast")
+		});
 	  function buttFunc(index)
 		{
 			if(expanded[index] == false)
@@ -49,8 +52,10 @@ $(document).ready(function(){
 			}
 		}
 });
-function showDescription(id){
-	  $("#" + id).slideToggle("fast");
+function showDescription(){
+	  $("#overlay").slideToggle("fast");
+	  $("#oHead").text(arguments[0]);
+	  $("#oInfo").text(arguments[1]);
 	  }
 </script>
 </head>
@@ -68,6 +73,12 @@ function showDescription(id){
 			<li class="active"><a href="#Overview">Overview</a></li>
 
 		</ul>
+		<div id="overlay">
+			<button id="close">Close X</button>
+			<h1 id="oHead"></h1><br><br><br>
+			<p id="oInfo"></p>
+		</div>
+
 
 		<g:if test="${classes}">
 			<div class="card-div tab-content">
@@ -87,7 +98,7 @@ function showDescription(id){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned == null}">
 							<tr>
-								<td><a onclick="showDescription('oa${assignment.id}')" href="#">${assignment.name}</a><p id="oa${assignment.id}" style="display:none">${assignment.description}</p></td>
+								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 							</g:if>
@@ -101,8 +112,7 @@ function showDescription(id){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned != null}">
 							<tr>
-								<td><a onclick="showDescription('a${assignment.id}')" href="#">${assignment.name}</a><p id="a${assignment.id}" style="display:none">${assignment.description}</p></td>
-	
+								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>	
 								<td class="cell-right">${assignment.calcGrade()}</td>
 							</tr>
 							</g:if>
@@ -116,8 +126,7 @@ function showDescription(id){
 						<tr>
 							<g:each var="material" in="${course.materials}">
 							<tr>
-								<td><a onclick="showDescription('om${material.id}')" href="#">${material.name}</a><p id="om${material.id}" style="display:none">${material.description}</p></td>
-								<td class="cell-right">${material.getDate()}</td>
+								<td><a onclick="showDescription('${material.name}', '${material.description}')" href="#">${material.name}</a></td>								<td class="cell-right">${material.getDate()}</td>
 							</tr>
 							</g:each>
 						</tr>
@@ -142,7 +151,7 @@ function showDescription(id){
 						</tr>
 						<g:each in="${course.materials}" var="material">
 							<tr>
-								<td><a onclick="showDescription('mm${material.id}')" href="#">${material.name}</a><p id="mm${material.id}" style="display:none">${material.description}</p></td>
+								<td><a onclick="showDescription('${material.name}', '${material.description}')" href="#">${material.name}</a></td>								<td class="cell-right">${material.getDate()}</td>
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
 						</g:each>
@@ -167,7 +176,7 @@ function showDescription(id){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned == null}">
 							<tr>
-								<td><a onclick="showDescription('aa${assignment.id}')" href="#">${assignment.name}</a><p id="aa${assignment.id}" style="display:none">${assignment.description}</p></td>
+								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>	
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 							</g:if>
@@ -194,7 +203,7 @@ function showDescription(id){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned}">
 							<tr>
-								<td><a onclick="showDescription('ga${assignment.id}')" href="#">${assignment.name}</a><p id="ga${assignment.id}" style="display:none">${assignment.description}</p></td>
+								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>	
 								<td class="cell-right">${assignment.calcGrade()}</td>
 							</tr>
 							</g:if>

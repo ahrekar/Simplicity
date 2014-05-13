@@ -136,7 +136,30 @@ is why the show more does not work. We need to fix this.*?
 		clear: both;
 	}
 	.panel-default{ /* Make the panels take up half the screen. */
-		width:45%;
+		width:49.01%;
 		float:left;
 	}
 }
+#overlay {
+	border-radius:3px 3px 3px 3px; 
+	position: absolute;
+	background-color: #FFFFFF;
+	display:none;
+	border: #c0c0c0 solid 1px;
+	z-index: 1;
+	padding: 8px;
+	top: 70px;
+	left: 10px;
+	width: 97%;
+	height: 90%;
+	box-shadow: 10px 10px 5px #888888
+}
+#close {
+	float:right;
+	margin-right:5px;
+}
+#oHead {
+	display:block;
+}
+
+
