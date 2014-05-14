@@ -74,7 +74,7 @@ function showDescription(){
 
 		</ul>
 		<div id="overlay">
-			<button id="close">Close X</button>
+			<button class="btn" id="close">Close X</button>
 			<h1 id="oHead"></h1><br><br><br>
 			<p id="oInfo"></p>
 		</div>

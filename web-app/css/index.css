@@ -32,8 +32,13 @@ background-color: #002244;
 }
 .panel-default{
 	width:100%;
+<<<<<<< HEAD
 	margin-right:13px;
 	margin-left:auto;
+=======
+	margin-left:0.75%;
+	margin-right:0.75%;
+>>>>>>> d675ba6a34e0a49d40d440f3d42e77593d468bbd
 	margin-bottom:50px;
 	display: inline-block;
 }
@@ -139,7 +144,7 @@ is why the show more does not work. We need to fix this.*?
 		clear: both;
 	}
 	.panel-default{ /* Make the panels take up half the screen. */
-		width:49.01%;
+		width:48.5%;
 		float:left;
 	}
 }
