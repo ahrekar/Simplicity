@@ -27,8 +27,9 @@ padding:10px;
 padding-top:15px;
 padding-bottom:1px;
 background-color: #002244;
-
+margin-top:50px;
 }
+
 .panel-default{
 	width:100%;
 	margin-left:0.75%;
@@ -63,11 +64,10 @@ th {
 
     /*the positioning of the tabs with margins*/
     .tab-links li {
-        margin:0px 5px;
-        float:right; 
+        margin:3px 5px;
+        float:left; 
         list-style:none;
-		position:relative;
-		top:-59px; 
+		top:2px; 
     } 
 
         .tab-links a{
@@ -136,11 +136,28 @@ is why the show more does not work. We need to fix this.*?
 	.panel-default br{ /* Clear breakpoints */
 		clear: both;
 	}
+
 	.panel-default{ /* Make the panels take up half the screen. */
 		width:48.5%;
 		float:left;
 	}
+
+    .tab-links li {
+        margin:0px 5px;
+        float:right; 
+        list-style:none;
+		position:relative;
+		top:-59px; 
+    } 
+	.card-div {
+		padding:10px;
+		padding-top:15px;
+		padding-bottom:1px;
+		background-color: #002244;
+		margin-top:-10px;
+	}
 }
+
 #overlay {
 	border-radius:3px 3px 3px 3px; 
 	position: absolute;

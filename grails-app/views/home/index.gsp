@@ -76,7 +76,7 @@ function showDescription(){
 		<div id="overlay">
 			<button class="btn" id="close">Close X</button>
 			<h1 id="oHead"></h1><br><br><br>
-			<p id="oInfo"></p>
+			<h2 id="oInfo"></h2>
 		</div>
 
 
@@ -151,7 +151,7 @@ function showDescription(){
 						</tr>
 						<g:each in="${course.materials}" var="material">
 							<tr>
-								<td><a onclick="showDescription('${material.name}', '${material.description}')" href="#">${material.name}</a></td>								<td class="cell-right">${material.getDate()}</td>
+								<td><a onclick="showDescription('${material.name}', '${material.description}')" href="#">${material.name}</a></td>	
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
 						</g:each>
