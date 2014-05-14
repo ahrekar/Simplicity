@@ -27,12 +27,15 @@ padding:10px;
 padding-top:15px;
 padding-bottom:1px;
 background-color: #002244;
-
+  width: 100%;
+  text-align: center;
 }
 .panel-default{
 	width:100%;
 	margin-right:13px;
+	margin-left:auto;
 	margin-bottom:50px;
+	display: inline-block;
 }
 #go1, #go2, #go3, #go4, #go5 {
 	text-align:center;
@@ -152,7 +155,7 @@ is why the show more does not work. We need to fix this.*?
 	left: 10px;
 	width: 97%;
 	height: 90%;
-	box-shadow: 10px 10px 5px #888888
+	box-shadow: 10px 10px 5px #463E3F
 }
 #close {
 	float:right;
