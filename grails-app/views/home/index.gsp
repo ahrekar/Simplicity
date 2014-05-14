@@ -52,10 +52,10 @@ $(document).ready(function(){
 			}
 		}
 });
-function showDescription(){
+function showDescription(name, description){
 	  $("#overlay").slideToggle("fast");
-	  $("#oHead").text(arguments[0]);
-	  $("#oInfo").text(arguments[1]);
+	  $("#top").text(name);
+	  $("#bottom").text(description);
 	  }
 </script>
 </head>
@@ -74,12 +74,10 @@ function showDescription(){
 
 		</ul>
 		<div id="overlay">
-			<button class="btn" id="close">Close X</button>
-			<h1 id="oHead"></h1><br><br><br>
-			<p id="oInfo"></p>
+			<button class="btn btn-default" id="close">Close X</button>
+			<h2 id="top"></h2>
+			<p id="bottom"></p>
 		</div>
-
-
 		<g:if test="${classes}">
 			<div class="card-div tab-content">
 
@@ -218,7 +216,7 @@ function showDescription(){
 			</div>
 		</g:if>
 	</div>
-	
+
 </body>
 
 
