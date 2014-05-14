@@ -32,13 +32,8 @@ background-color: #002244;
 }
 .panel-default{
 	width:100%;
-<<<<<<< HEAD
-	margin-right:13px;
-	margin-left:auto;
-=======
 	margin-left:0.75%;
 	margin-right:0.75%;
->>>>>>> d675ba6a34e0a49d40d440f3d42e77593d468bbd
 	margin-bottom:50px;
 	display: inline-block;
 }
