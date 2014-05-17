@@ -13,6 +13,9 @@
 	<script src="${resource(dir: 'js', file: 'index.js')}"></script>
  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
  <script src="http://ajax.gogleapis.com/ajax/libs/jquery/1.110.jquery.min.js"></script> 
+ <r:require module="jquery"/>
+     <g:javascript library="jquery" />
+
 <script>
 $(document).ready(function(){
 	var expanded = [false, false, false];
@@ -33,6 +36,9 @@ $(document).ready(function(){
 	$("#close").click(function() {
 		$("#overlay").slideToggle("fast")
 		});
+	$(".clickme").click(function() {
+		$("#overlay").slideToggle("fast")
+		});
 	  function buttFunc(index)
 		{
 			if(expanded[index] == false)
@@ -51,10 +57,10 @@ $(document).ready(function(){
 			}
 		}
 });
-function showDescription(assignment){
+function showDescription(name, description){
 	  $("#overlay").slideToggle("fast");
-	  $("#top").text(${assignment.name});
-	  $("#bottom").text(${assignment.description});
+		 $("#top").text(name);
+		 $("#bottom").text(description);
 	  }
 </script>
 
@@ -75,9 +81,12 @@ function showDescription(assignment){
 		</ul>
 		<div id="overlay">
 			<button class="btn btn-default" id="close">Close X</button>
-			<h2 id="top"></h2>
-			<p id="bottom"></p>
+			<div id="content"></div>
+			<g:uploadForm name="myUpload">
+   				 <input type="file" name="myFile" />
+			</g:uploadForm>
 		</div>
+		
 		<g:if test="${classes}">
 			<div class="card-div tab-content">
 
@@ -96,7 +105,8 @@ function showDescription(assignment){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned == null}">
 							<tr>
-								<td><a onclick="showDescription('${assignment}')" href="#">${assignment.name}</a></td>
+								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 							</g:if>
@@ -110,7 +120,8 @@ function showDescription(assignment){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned != null}">
 							<tr>
-								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>	
+								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-right">${assignment.calcGrade()}</td>
 							</tr>
 							</g:if>
@@ -124,7 +135,9 @@ function showDescription(assignment){
 						<tr>
 							<g:each var="material" in="${course.materials}">
 							<tr>
-								<td><a onclick="showDescription('${material.name}', '${material.description}')" href="#">${material.name}</a></td>								<td class="cell-right">${material.getDate()}</td>
+								<td><g:remoteLink action="setCurrAssignment" params="${[name:material.name, description:material.description]}" update="content">
+								<span  class="clickme">${material.name}</span></g:remoteLink></td>
+								<td class="cell-right">${material.getDate()}</td>
 							</tr>
 							</g:each>
 						</tr>
@@ -148,8 +161,9 @@ function showDescription(assignment){
 							<th class="cell-right">Upload Date</th>
 						</tr>
 						<g:each in="${course.materials}" var="material">
-							<tr>
-								<td><a onclick="showDescription('${material.name}', '${material.description}')" href="#">${material.name}</a></td>	
+					<tr>
+								<td><g:remoteLink action="setCurrAssignment" params="${[name:material.name, description:material.description]}" update="content">
+								<span  class="clickme">${material.name}</span></g:remoteLink></td>								
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
 						</g:each>
@@ -174,7 +188,8 @@ function showDescription(assignment){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned == null}">
 							<tr>
-								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>	
+								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>								
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 							</g:if>
@@ -201,7 +216,8 @@ function showDescription(assignment){
 							<g:each var="assignment" in="${course.assignments}">
 							<g:if test="${assignment.pointsEarned}">
 							<tr>
-								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>	
+								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-right">${assignment.calcGrade()}</td>
 							</tr>
 							</g:if>

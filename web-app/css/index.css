@@ -168,12 +168,16 @@ is why the show more does not work. We need to fix this.*?
 	top: 70px;
 	left: 10px;
 	width:98%;
-	height:97%;
+
 	box-shadow: 10px 10px 5px #463E3F;
 }
 #close {
 	float:right;
 	margin-right:5px;
+}
+#bottom {
+	width:97%;
+	word-wrap:normal;
 }
 
 
