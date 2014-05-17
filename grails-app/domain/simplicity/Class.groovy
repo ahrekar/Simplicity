@@ -57,12 +57,13 @@ class Class {
 	 	wants returned. **/
 	def getMaterials(int num){
 		/* If the number of assignments is less than the index
-		   requested, just return the number of assignments. */
-		int indxNum = (materials.size() < num) ? materials.size() - 1 : num - 1
-		if (materials)
-			return materials[0..indxNum]
+		   requested, just return the number of Materials. */
+		def mat = Material.findAllByCourse(this,[sort:"uploadDate", order:"desc"])
+		int indxNum = (mat.size() < num) ? mat.size() - 1 : num - 1
+		if (mat)
+			return mat[0..indxNum]
 		else
-			return materials
+			return mat
 	}
 
     static constraints = {

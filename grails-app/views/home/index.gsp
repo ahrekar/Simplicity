@@ -90,38 +90,64 @@ function showDescription(name, description){
 					<table class="table table-hover">
 						<tr>
 							<th>Assignments</th>
-							<th class="cell-right">Due Date</th>
+							<th colspan="2" class="cell-right">Due Date</th>
 						</tr>
 						<g:set var="notGradedAssignments" value="${course.getNotGraded(1)}"/>
 						<g:if test="${notGradedAssignments}">
+							<g:each var="assignment" in="${notGradedAssignments}">
 							<tr>
-								<td><a onclick="showDescription('${notGradedAssignments[0].name}', '${notGradedAssignments[0].description}')" href="#">${notGradedAssignments[0].name}</a></td>
-								<td class="cell-right">${notGradedAssignments[0].getDate()}</td>
+								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>
+								<td colspan="2" class="cell-right">${assignment.getDate()}</td>
 							</tr>
+							</g:each>
 						</g:if>
+						<g:else>
+							<tr>
+								<td>--</td>
+								<td colspan="2" class="cell-right">--</td>
+							</tr>
+						</g:else>
 						<tr >
 							<th>Grades</th>
-							<th class="cell-right">Grade</th>
+							<th class="cell-center">Grade</th>
+							<th class="cell-right">Due Date</th>
 						</tr>
-						<g:set var="gradedAssignments" value="${course.getGraded()}"/>
+						<g:set var="gradedAssignments" value="${course.getGraded(1)}"/>
 						<g:if test="${gradedAssignments}">
+							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
-								<td><a onclick="showDescription('${gradedAssignments[0].name}', '${gradedAssignments[0].description}')" href="#">${gradedAssignments[0].name}</a></td>
-								<td class="cell-right">${gradedAssignments[0].calcGrade()}</td>
+								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>
+								<td class="cell-center">${assignment.calcGrade()}</td>
+								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
+							</g:each>
 						</g:if>
+						<g:else>
+							<tr>
+								<td>--</td>
+								<td>--</td>
+								<td class="cell-right">--</td>
+							</tr>
+						</g:else>
 						<tr>
 							<th>Materials</th>
-							<th class="cell-right">Upload Date</th>
+							<th colspan="2" class="cell-right">Upload Date</th>
 						</tr>
-						<g:if test="${course.materials}">
-						<tr>
+						<g:set var="materials" value="${course.getMaterials(1)}"/>
+						<g:if test="${materials}">
+							<g:each var="material" in="${materials}">
 							<tr>
-								<td><a onclick="showDescription('${course.materials[0].name}', '${course.materials[0].description}')" href="#">${course.materials[0].name}</a></td>								
-								<td class="cell-right">${course.materials[0].getDate()}</td>
+								<td><a onclick="showDescription('${material.name}', '${material.description}')" href="#">${material.name}</a></td>
+								<td colspan="2" class="cell-right">${material.getDate()}</td>
 							</tr>
-						</tr>
+							</g:each>
 						</g:if>
+						<g:else>
+							<tr>
+								<td>--</td>
+								<td colspan="2" class="cell-right">--</td>
+							</tr>
+						</g:else>
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
@@ -140,15 +166,26 @@ function showDescription(name, description){
 							<th>Material</th>
 							<th class="cell-right">Upload Date</th>
 						</tr>
-						<g:set var="materials" value="${course.getMaterials(3)}"/>
+						<g:set var="numDisplay" value="${4}"/>
+						<g:set var="materials" value="${course.getMaterials(numDisplay)}"/>
+
 						<g:if test="${materials}">
 							<g:each var="material" in="${materials}">
 							<tr>
 								<td><a onclick="showDescription('${material.name}', '${material.description}')" href="#">${material.name}</a></td>
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
+							
+							<% numDisplay-- %>
 							</g:each>
 						</g:if>
+						<g:while test="${numDisplay > 0}">
+							<tr>
+								<td> -- </td>
+								<td class="cell-right"> -- </td>
+							</tr>
+							<% numDisplay-- %>
+						</g:while>
 					</table>
 					<div class="panel-footer" id="go1">Show More...</div>
 				</div>
@@ -166,15 +203,24 @@ function showDescription(name, description){
 							<th>Assignments</th>
 							<th class="cell-right">Due Date</th>
 						</tr>
-						<g:set var="notGradedAssignments" value="${course.getNotGraded(3)}"/>
+						<g:set var="numDisplay" value="${4}"/>
+						<g:set var="notGradedAssignments" value="${course.getNotGraded(numDisplay)}"/>
 						<g:if test="${notGradedAssignments}">
 							<g:each var="assignment" in="${notGradedAssignments}">
 							<tr>
 								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
+							<% numDisplay-- %>
 							</g:each>
 						</g:if>
+						<g:while test="${numDisplay > 0}">
+							<tr>
+								<td> -- </td>
+								<td class="cell-right"> -- </td>
+							</tr>
+							<% numDisplay-- %>
+						</g:while>
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
@@ -190,17 +236,30 @@ function showDescription(name, description){
 					<table class="table table-hover">
 						<tr>
 							<th>Grades</th>
-							<th class="cell-right">Grade</th>
+							<th class="cell-center">Grade</th>
+							<th class="cell-right">Date</th>
 						</tr>
-						<g:set var="gradedAssignments" value="${course.getGraded(3)}"/>
+						<g:set var="numDisplay" value="${4}"/>
+						<g:set var="gradedAssignments" value="${course.getGraded(numDisplay)}"/>
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
 								<td><a onclick="showDescription('${assignment.name}', '${assignment.description}')" href="#">${assignment.name}</a></td>
+								<td class="cell-center">${assignment.calcGrade()}</td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
+
+							<% numDisplay-- %>
 							</g:each>
 						</g:if>
+						<g:while test="${numDisplay > 0}">
+							<tr>
+								<td> --</td>
+								<td class="cell-center">--</td>
+								<td class="cell-right">--</td>
+							</tr>
+							<% numDisplay-- %>
+						</g:while>
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
