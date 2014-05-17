@@ -32,7 +32,7 @@ public Assignment(String name, String description, Date dateDue, Float pointsPos
 	private String calcGrade()
 	{
 		Float g = this.pointsEarned/this.pointsPossible*100
-		String grade = g + "%" 
+		String grade = String.format("%1\$.1f%%",g) 
 		return grade
 	}
 	private String getDate()

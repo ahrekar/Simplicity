@@ -99,49 +99,67 @@ function showDescription(name, description){
 					<table class="table table-hover">
 						<tr>
 							<th>Assignments</th>
-							<th class="cell-right">Due Date</th>
+							<th colspan="2" class="cell-right">Due Date</th>
 						</tr>
-						<g:if test="${course.assignments}">
-							<g:each var="assignment" in="${course.assignments}">
-							<g:if test="${assignment.pointsEarned == null}">
+						<g:set var="notGradedAssignments" value="${course.getNotGraded(1)}"/>
+						<g:if test="${notGradedAssignments}">
+							<g:each var="assignment" in="${notGradedAssignments}">
 							<tr>
 								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
-								<td class="cell-right">${assignment.getDate()}</td>
+								<td colspan="2" class="cell-right">${assignment.getDate()}</td>
 							</tr>
-							</g:if>
 							</g:each>
 						</g:if>
+						<g:else>
+							<tr>
+								<td>--</td>
+								<td colspan="2" class="cell-right">--</td>
+							</tr>
+						</g:else>
 						<tr >
 							<th>Grades</th>
-							<th class="cell-right">Grade</th>
+							<th class="cell-center">Grade</th>
+							<th class="cell-right">Due Date</th>
 						</tr>
-						<g:if test="${course.assignments}">
-							<g:each var="assignment" in="${course.assignments}">
-							<g:if test="${assignment.pointsEarned != null}">
+						<g:set var="gradedAssignments" value="${course.getGraded(1)}"/>
+						<g:if test="${gradedAssignments}">
+							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
 								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
-								<td class="cell-right">${assignment.calcGrade()}</td>
+								<td class="cell-center">${assignment.calcGrade()}</td>
+								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
-							</g:if>
 							</g:each>
 						</g:if>
+						<g:else>
+							<tr>
+								<td>--</td>
+								<td>--</td>
+								<td class="cell-right">--</td>
+							</tr>
+						</g:else>
 						<tr>
 							<th>Materials</th>
-							<th class="cell-right">Upload Date</th>
+							<th colspan="2" class="cell-right">Upload Date</th>
 						</tr>
-						<g:if test="${course.materials}">
-						<tr>
-							<g:each var="material" in="${course.materials}">
+						<g:set var="materials" value="${course.getMaterials(1)}"/>
+						<g:if test="${materials}">
+							<g:each var="material" in="${materials}">
 							<tr>
 								<td><g:remoteLink action="setCurrAssignment" params="${[name:material.name, description:material.description]}" update="content">
 								<span  class="clickme">${material.name}</span></g:remoteLink></td>
-								<td class="cell-right">${material.getDate()}</td>
+								<td colspan="2" class="cell-right">${material.getDate()}</td>
 							</tr>
 							</g:each>
-						</tr>
 						</g:if>
+						<g:else>
+							<tr>
+								<td>--</td>
+								<td colspan="2" class="cell-right">--</td>
+							</tr>
+						</g:else>
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
@@ -160,13 +178,27 @@ function showDescription(name, description){
 							<th>Material</th>
 							<th class="cell-right">Upload Date</th>
 						</tr>
-						<g:each in="${course.materials}" var="material">
-					<tr>
+						<g:set var="numDisplay" value="${4}"/>
+						<g:set var="materials" value="${course.getMaterials(numDisplay)}"/>
+
+						<g:if test="${materials}">
+							<g:each var="material" in="${materials}">
+							<tr>
 								<td><g:remoteLink action="setCurrAssignment" params="${[name:material.name, description:material.description]}" update="content">
-								<span  class="clickme">${material.name}</span></g:remoteLink></td>								
+								<span  class="clickme">${material.name}</span></g:remoteLink></td>	
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
-						</g:each>
+							
+							<% numDisplay-- %>
+							</g:each>
+						</g:if>
+						<g:while test="${numDisplay > 0}">
+							<tr>
+								<td> -- </td>
+								<td class="cell-right"> -- </td>
+							</tr>
+							<% numDisplay-- %>
+						</g:while>
 					</table>
 					<div class="panel-footer" id="go1">Show More...</div>
 				</div>
@@ -184,17 +216,25 @@ function showDescription(name, description){
 							<th>Assignments</th>
 							<th class="cell-right">Due Date</th>
 						</tr>
-						<g:if test="${course.assignments}">
-							<g:each var="assignment" in="${course.assignments}">
-							<g:if test="${assignment.pointsEarned == null}">
+						<g:set var="numDisplay" value="${4}"/>
+						<g:set var="notGradedAssignments" value="${course.getNotGraded(numDisplay)}"/>
+						<g:if test="${notGradedAssignments}">
+							<g:each var="assignment" in="${notGradedAssignments}">
 							<tr>
 								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>								
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
-							</g:if>
+							<% numDisplay-- %>
 							</g:each>
 						</g:if>
+						<g:while test="${numDisplay > 0}">
+							<tr>
+								<td> -- </td>
+								<td class="cell-right"> -- </td>
+							</tr>
+							<% numDisplay-- %>
+						</g:while>
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
@@ -210,19 +250,31 @@ function showDescription(name, description){
 					<table class="table table-hover">
 						<tr>
 							<th>Grades</th>
-							<th class="cell-right">Grade</th>
+							<th class="cell-center">Grade</th>
+							<th class="cell-right">Date</th>
 						</tr>
-						<g:if test="${course.assignments}">
-							<g:each var="assignment" in="${course.assignments}">
-							<g:if test="${assignment.pointsEarned}">
+						<g:set var="numDisplay" value="${4}"/>
+						<g:set var="gradedAssignments" value="${course.getGraded(numDisplay)}"/>
+						<g:if test="${gradedAssignments}">
+							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
 								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
-								<td class="cell-right">${assignment.calcGrade()}</td>
+								<td class="cell-center">${assignment.calcGrade()}</td>
+								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
-							</g:if>
+
+							<% numDisplay-- %>
 							</g:each>
 						</g:if>
+						<g:while test="${numDisplay > 0}">
+							<tr>
+								<td> --</td>
+								<td class="cell-center">--</td>
+								<td class="cell-right">--</td>
+							</tr>
+							<% numDisplay-- %>
+						</g:while>
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>

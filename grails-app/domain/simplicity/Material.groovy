@@ -8,10 +8,12 @@ class Material{
 	String name
 	String description
 	Date uploadDate;
+
     static constraints = {
 		description(maxSize: 4096, blank:false)
 
     }
+
 	private String getDate()
 	{
 		DateFormat date = new SimpleDateFormat("MM/dd/yyyy")
