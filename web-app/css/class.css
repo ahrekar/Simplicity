@@ -2,6 +2,9 @@
 background-color: #002244;
 height:500px;
 }
+.panel-footer {
+	text-align:center;
+}
 .top{
 background-color: #fecb00;
 color: #002244;
