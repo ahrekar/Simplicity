@@ -15,6 +15,12 @@ class ClassController {
         respond Class.list(params), model:[classInstanceCount: Class.count()]
     }
 
+	def overview(Class classInstance) {
+		
+		[course:classInstance]
+		
+	}
+
     def show(Class classInstance) {
         respond classInstance
     }

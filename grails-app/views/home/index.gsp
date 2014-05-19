@@ -62,7 +62,7 @@ function showDescription(){
 		alert("File successfully uploaded!")
 	  }
 </script>
-
+<r:layoutResources/>
 </head>
 
 <body id="body">
@@ -81,7 +81,6 @@ function showDescription(){
 		<div id="overlay">
 			<button class="btn btn-default" id="close">Close X</button>
 			<div id="content"></div>
-
 		</div>
 		
 		<g:if test="${classes}">
@@ -91,7 +90,7 @@ function showDescription(){
 				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">${course.name}</h3>
+						<h3 class="panel-title">${course.name} (<g:formatNumber number="${course.calcGrade()}" format="#0.0%"/>) </h3>
 					</div>
 					<table class="table table-hover">
 						<tr>
@@ -102,7 +101,7 @@ function showDescription(){
 						<g:if test="${notGradedAssignments}">
 							<g:each var="assignment" in="${notGradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<td><g:remoteLink action="setCurrAssignment" params="${[id:assignment.id]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td colspan="2" class="cell-right">${assignment.getDate()}</td>
 							</tr>
@@ -123,8 +122,8 @@ function showDescription(){
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrGradedAssignment" params="${[name:assignment.name, grade:assignment.calcGrade(), description:assignment.description]}" update="content">
-								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
+								<td><g:remoteLink action="setCurrAssignment" params="${[id:assignment.id]}" update="content">
+								<span class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-center">${assignment.calcGrade()}</td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
@@ -145,7 +144,7 @@ function showDescription(){
 						<g:if test="${materials}">
 							<g:each var="material" in="${materials}">
 							<tr>
-								<td><g:remoteLink action="setCurrMaterial" params="${[name:material.name, description:material.description]}" update="content">
+								<td><g:remoteLink action="setCurrMaterial" params="${[id:material.id]}" update="content">
 								<span  class="clickme">${material.name}</span></g:remoteLink></td>
 								<td colspan="2" class="cell-right">${material.getDate()}</td>
 							</tr>
@@ -158,7 +157,7 @@ function showDescription(){
 							</tr>
 						</g:else>
 					</table>
-					<div class="panel-footer" id="go2">Show More...</div>
+					<div class="panel-footer"><g:link controller="class" action="overview" id="${course.id}">Show More...</g:link></div>
 				</div>
 				</g:each>
 			</div> <%-- End Overview Tab --%>
