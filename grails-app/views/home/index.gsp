@@ -171,7 +171,7 @@ function showDescription(name, description){
 				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">${course.name}</h3>
+						<h3 class="panel-title">${course.name} (<g:formatNumber number="${course.calcGrade()}" format="#0.0%"/>)</h3>
 					</div>
 
 					<table class="table table-hover">
@@ -210,7 +210,7 @@ function showDescription(name, description){
 				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">${course.name}</h3>
+						<h3 class="panel-title">${course.name} (<g:formatNumber number="${course.calcGrade()}" format="#0.0%"/>)</h3>
 					</div>
 					<table class="table table-hover">
 						<tr>
@@ -246,7 +246,7 @@ function showDescription(name, description){
 				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">${course.name}</h3>
+						<h3 class="panel-title">${course.name} (<g:formatNumber number="${course.calcGrade()}" format="#0.0%"/>)</h3>
 					</div>
 					<table class="table table-hover">
 						<tr>
