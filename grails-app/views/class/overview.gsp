@@ -56,9 +56,6 @@ $(document).ready(function(){
 			<button class="btn btn-default" id="close">Close X</button>
 			<div id="content">
 			</div>
-			<g:uploadForm name="myUpload">
-   				 <input type="file" name="myFile" />
-			</g:uploadForm>
 		</div>
 		
 		<g:if test="${course}">
@@ -134,7 +131,7 @@ $(document).ready(function(){
 							</tr>
 						</g:else>
 					</table>
-					<div class="panel-footer" id="go2">Show More...</div>
+					<div class="panel-footer"><g:link controller="home" action="index" id="${course.id}">Show Less...</g:link></div>
 				</div>
 			</div> <%-- End Overview Tab --%>
 
@@ -155,7 +152,7 @@ $(document).ready(function(){
 						<g:if test="${materials}">
 							<g:each var="material" in="${materials}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:material.name, description:material.description]}" update="content">
+								<td><g:remoteLink action="setCurrMaterial" params="${[id:material.id]}" update="content">
 								<span  class="clickme">${material.name}</span></g:remoteLink></td>	
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
@@ -171,7 +168,7 @@ $(document).ready(function(){
 							<% numDisplay-- %>
 						</g:while>
 					</table>
-					<div class="panel-footer" id="go1">Show More...</div>
+					<div class="panel-footer"><g:link controller="home" action="index" id="${course.id}">Show Less...</g:link></div>
 				</div>
 			</div> <%-- End Materials tab --%>
 
@@ -190,7 +187,7 @@ $(document).ready(function(){
 						<g:if test="${notGradedAssignments}">
 							<g:each var="assignment" in="${notGradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<td><g:remoteLink action="setCurrAssignment" params="${[id:assignment.id]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>								
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
@@ -205,7 +202,7 @@ $(document).ready(function(){
 							<% numDisplay-- %>
 						</g:while>
 					</table>
-					<div class="panel-footer" id="go2">Show More...</div>
+					<div class="panel-footer"><g:link controller="home" action="index" id="${course.id}">Show Less...</g:link></div>
 				</div>
 			</div> <%-- End assignments tab --%>
 
@@ -225,7 +222,7 @@ $(document).ready(function(){
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrGradedAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<td><g:remoteLink action="setCurrGradedAssignment" params="${[id:assignment.id]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-center">${assignment.calcGrade()}</td>
 								<td class="cell-right">${assignment.getDate()}</td>
@@ -243,7 +240,7 @@ $(document).ready(function(){
 							<% numDisplay-- %>
 						</g:while>
 					</table>
-					<div class="panel-footer" id="go2">Show More...</div>
+					<div class="panel-footer"><g:link controller="home" action="index" id="${course.id}">Show Less...</g:link></div>
 				</div>
 			</div> <%-- End Grades tab --%>
 				
