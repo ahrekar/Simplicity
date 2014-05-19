@@ -32,6 +32,7 @@ $(document).ready(function(){
 	$(".clickme").click(function() {
 		$("#overlay").slideToggle("fast")
 		});
+});
 	function showDescription(){
 		  $("#overlay").slideToggle("fast");
 			alert("File successfully uploaded!")
