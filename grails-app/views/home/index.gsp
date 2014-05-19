@@ -18,8 +18,6 @@
 
 <script>
 $(document).ready(function(){
-	var expanded = [false, false, false];
-	
 	$(".tabs .tab-links a").on("click", function(e){
 		var currentAttrValue = $(this).attr("href");
 		$(".tabs " + currentAttrValue).show().siblings().hide(); 
