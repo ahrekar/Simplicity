@@ -57,10 +57,9 @@ $(document).ready(function(){
 			}
 		}
 });
-function showDescription(name, description){
+function showDescription(){
 	  $("#overlay").slideToggle("fast");
-		 $("#top").text(name);
-		 $("#bottom").text(description);
+		alert("File successfully uploaded!")
 	  }
 </script>
 
@@ -82,9 +81,7 @@ function showDescription(name, description){
 		<div id="overlay">
 			<button class="btn btn-default" id="close">Close X</button>
 			<div id="content"></div>
-			<g:uploadForm name="myUpload">
-   				 <input type="file" name="myFile" />
-			</g:uploadForm>
+
 		</div>
 		
 		<g:if test="${classes}">
@@ -126,7 +123,7 @@ function showDescription(name, description){
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<td><g:remoteLink action="setCurrGradedAssignment" params="${[name:assignment.name, grade:assignment.calcGrade(), description:assignment.description]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-center">${assignment.calcGrade()}</td>
 								<td class="cell-right">${assignment.getDate()}</td>
@@ -148,7 +145,7 @@ function showDescription(name, description){
 						<g:if test="${materials}">
 							<g:each var="material" in="${materials}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:material.name, description:material.description]}" update="content">
+								<td><g:remoteLink action="setCurrMaterial" params="${[name:material.name, description:material.description]}" update="content">
 								<span  class="clickme">${material.name}</span></g:remoteLink></td>
 								<td colspan="2" class="cell-right">${material.getDate()}</td>
 							</tr>
@@ -184,7 +181,7 @@ function showDescription(name, description){
 						<g:if test="${materials}">
 							<g:each var="material" in="${materials}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:material.name, description:material.description]}" update="content">
+								<td><g:remoteLink action="setCurrMaterial" params="${[name:material.name, description:material.description]}" update="content">
 								<span  class="clickme">${material.name}</span></g:remoteLink></td>	
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
@@ -258,7 +255,7 @@ function showDescription(name, description){
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<td><g:remoteLink action="setCurrGradedAssignment" params="${[name:assignment.name, grade:assignment.calcGrade(), description:assignment.description]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-center">${assignment.calcGrade()}</td>
 								<td class="cell-right">${assignment.getDate()}</td>
