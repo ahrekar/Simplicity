@@ -122,7 +122,7 @@ function showDescription(){
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[id:assignment.id]}" update="content">
+								<td><g:remoteLink action="setCurrGradedAssignment" params="${[id:assignment.id]}" update="content">
 								<span class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-center">${assignment.calcGrade()}</td>
 								<td class="cell-right">${assignment.getDate()}</td>
@@ -180,7 +180,7 @@ function showDescription(){
 						<g:if test="${materials}">
 							<g:each var="material" in="${materials}">
 							<tr>
-								<td><g:remoteLink action="setCurrMaterial" params="${[name:material.name, description:material.description]}" update="content">
+								<td><g:remoteLink action="setCurrMaterial" params="${[id:material.id]}" update="content">
 								<span  class="clickme">${material.name}</span></g:remoteLink></td>	
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
@@ -217,7 +217,7 @@ function showDescription(){
 						<g:if test="${notGradedAssignments}">
 							<g:each var="assignment" in="${notGradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<td><g:remoteLink action="setCurrAssignment" params="${[id:assignment.id]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>								
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
@@ -254,7 +254,7 @@ function showDescription(){
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrGradedAssignment" params="${[name:assignment.name, grade:assignment.calcGrade(), description:assignment.description]}" update="content">
+								<td><g:remoteLink action="setCurrGradedAssignment" params="${[id:assignment.id]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-center">${assignment.calcGrade()}</td>
 								<td class="cell-right">${assignment.getDate()}</td>
