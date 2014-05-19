@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${resource(dir: 'css', file: 'index.css')}"
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'class.css')}"
 	type="text/css">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -88,11 +88,10 @@ function showDescription(name, description){
 			</g:uploadForm>
 		</div>
 		
-		<g:if test="${classes}">
+		<g:if test="${course}">
 			<div class="card-div tab-content">
 
 			<div id="Overview" class="active tab">
-				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">${course.name} (<g:formatNumber number="${course.calcGrade()}" format="#0.0%"/>) </h3>
@@ -102,7 +101,7 @@ function showDescription(name, description){
 							<th>Assignments</th>
 							<th colspan="2" class="cell-right">Due Date</th>
 						</tr>
-						<g:set var="notGradedAssignments" value="${course.getNotGraded(1)}"/>
+						<g:set var="notGradedAssignments" value="${course.getNotGraded(3)}"/>
 						<g:if test="${notGradedAssignments}">
 							<g:each var="assignment" in="${notGradedAssignments}">
 							<tr>
@@ -123,7 +122,7 @@ function showDescription(name, description){
 							<th class="cell-center">Grade</th>
 							<th class="cell-right">Due Date</th>
 						</tr>
-						<g:set var="gradedAssignments" value="${course.getGraded(1)}"/>
+						<g:set var="gradedAssignments" value="${course.getGraded(3)}"/>
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
@@ -145,7 +144,7 @@ function showDescription(name, description){
 							<th>Materials</th>
 							<th colspan="2" class="cell-right">Upload Date</th>
 						</tr>
-						<g:set var="materials" value="${course.getMaterials(1)}"/>
+						<g:set var="materials" value="${course.getMaterials(3)}"/>
 						<g:if test="${materials}">
 							<g:each var="material" in="${materials}">
 							<tr>
@@ -162,13 +161,11 @@ function showDescription(name, description){
 							</tr>
 						</g:else>
 					</table>
-					<div class="panel-footer"><g:link controller="class" action="overview" id="${course.id}">Show More...</g:link></div>
+					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
-				</g:each>
 			</div> <%-- End Overview Tab --%>
 
 			<div id="Materials" class="tab">
-				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">${course.name}</h3>
@@ -180,7 +177,7 @@ function showDescription(name, description){
 							<th class="cell-right">Upload Date</th>
 						</tr>
 						<g:set var="numDisplay" value="${4}"/>
-						<g:set var="materials" value="${course.getMaterials(numDisplay)}"/>
+						<g:set var="materials" value="${course.getMaterials()}"/>
 
 						<g:if test="${materials}">
 							<g:each var="material" in="${materials}">
@@ -203,11 +200,9 @@ function showDescription(name, description){
 					</table>
 					<div class="panel-footer" id="go1">Show More...</div>
 				</div>
-				</g:each>
 			</div> <%-- End Materials tab --%>
 
 			<div id="Assignments" class="tab">
-				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">${course.name}</h3>
@@ -239,11 +234,9 @@ function showDescription(name, description){
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
-				</g:each>
 			</div> <%-- End assignments tab --%>
 
 			<div id="Grades" class="tab">
-				<g:each var="course" in="${classes}">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">${course.name}</h3>
@@ -279,7 +272,6 @@ function showDescription(name, description){
 					</table>
 					<div class="panel-footer" id="go2">Show More...</div>
 				</div>
-				</g:each>
 			</div> <%-- End Grades tab --%>
 				
 			</div>

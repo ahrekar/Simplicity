@@ -66,6 +66,22 @@ class Class {
 			return mat
 	}
 
+	def calcGrade(){
+		def totalPointsPossible = 0.0;
+		def totalPointsEarned = 0.0;
+
+		def grades = Assignment.findAllByCourseAndPointsEarnedIsNotNull(this)
+
+		for(Assignment assignment : grades){
+			totalPointsPossible = totalPointsPossible + assignment.pointsPossible;
+			totalPointsEarned = totalPointsEarned + assignment.pointsEarned;
+		}
+		if (totalPointsPossible)
+			return totalPointsEarned/totalPointsPossible
+		else
+			return 0
+	}
+
     static constraints = {
     }
 

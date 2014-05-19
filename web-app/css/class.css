@@ -137,8 +137,9 @@ is why the show more does not work. We need to fix this.*?
 	}
 
 	.panel-default{ /* Make the panels take up half the screen. */
-		width:48.5%;
-		float:left;
+		margin-left:auto;
+		margin-right:auto;
+		width:700px;
 	}
 
     .tab-links li {
