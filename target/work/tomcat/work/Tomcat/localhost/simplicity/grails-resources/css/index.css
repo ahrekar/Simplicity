@@ -1,0 +1,185 @@
+#body {
+background-color: #002244;
+height:500px;
+}
+.top{
+background-color: #fecb00;
+color: #002244;
+padding:0px;
+margin:0px;
+height:62px;
+}
+h1 {
+float:left;
+padding-left:50px;
+position:relative;
+top:-8px;
+}
+#navbar {
+float:left;
+padding-left:20px;
+position:relative;
+top:20px;
+}
+
+.card-div {
+padding:10px;
+padding-top:15px;
+padding-bottom:1px;
+background-color: #002244;
+margin-top:50px;
+}
+
+.panel-default{
+	width:100%;
+	margin-left:0.75%;
+	margin-right:0.75%;
+}
+#go1, #go2, #go3, #go4, #go5 {
+	text-align:center;
+	cursor: pointer; cursor: hand;
+}
+
+th {
+	background-color:#f5f5f5;
+}
+
+.cell-right {
+	text-align:right;
+}
+
+.tabs{
+    width:100%;
+    display:inline-block; 
+}
+
+/*The tab links*/ 
+
+    .tab-links:after {
+        display:block; 
+        clear:both;
+        content:""; 
+    } 
+
+    /*the positioning of the tabs with margins*/
+    .tab-links li {
+        margin:3px 5px;
+        float:left; 
+        list-style:none;
+		top:2px; 
+    } 
+
+        .tab-links a{
+            padding:9px 15px; 
+            display:inline-block; 
+            border-radius:3px 3px 3px 3px; 
+            background:#FFF; /*slate blue*/
+            font-size:16px; 
+            font-weight:600; 
+            color:#4c4c4c;
+            transition:all linear 0.15s; 
+            text-decoration:none;
+            
+        }
+
+        .tab-links a:hover{
+            background:#a7cce5
+            text-decoration:none;
+        }
+        
+        a {
+        	text-decoration: none;
+        	color:black;
+        }
+a:link {color:black;
+       	text-decoration: none;}    /* unvisited link */
+a:visited {color:black;
+       	text-decoration: none;} /* visited link */
+a:hover {color:black;
+       	text-decoration: none;}   /* mouse over link */
+a:active {color:black;
+       	text-decoration: none;}  /* selected link */
+    
+    /*This will change settings for the individual tabs I have them set to black text with white background but both can be changed*/
+    li.active a, li.active a:hover{
+       /* background:#FFF; /*this will change the background color of the active tab*/
+        color:#000000;
+		text-decoration:none;
+    }
+    
+    /*this is where you can change the settings of the tab contents, this is where is set the background colour to a very light blue*/
+    .tab-content{
+        padding:15px;
+        border-radius:6px;
+		position:relative;
+		top: -40px;
+        box-shadow:-1px 1px 1px rgba(0,0,0,0.15); 
+       /* background:#6495ED;*/
+    }
+
+        .tab{
+            display:none;
+        }
+
+        .tab.active{
+            display:block; 
+        } 
+/*To get the tabs working I changed the of the course boxes from "block1" and "block2" to Overview, Materials, etc. That 
+is why the show more does not work. We need to fix this.*?
+
+/** AHREKAR 
+ * Here I am adding in the code for the breakpoints.
+ */
+
+@media (min-width: 700px){ /* If the window is larger than 700px */
+	.panel-default br{ /* Clear breakpoints */
+		clear: both;
+	}
+
+	.panel-default{ /* Make the panels take up half the screen. */
+		width:48.5%;
+		float:left;
+	}
+
+    .tab-links li {
+        margin:0px 5px;
+        float:right; 
+        list-style:none;
+		position:relative;
+		top:-59px; 
+    } 
+	.card-div {
+		padding:10px;
+		padding-top:15px;
+		padding-bottom:1px;
+		background-color: #002244;
+		margin-top:-10px;
+	}
+}
+
+#overlay {
+	border-radius:3px 3px 3px 3px; 
+	position: fixed;
+	background-color: #FFFFFF;
+	display:none;
+	border: #c0c0c0 solid 1px;
+	z-index: 1;
+	padding: 8px;
+	left:10%;
+	right:10%;
+	top: 70px;
+	width:80%;
+
+	box-shadow: 10px 10px 5px #463E3F;
+}
+#close {
+	float:right;
+	margin-right:5px;
+}
+#bottom {
+	width:97%;
+	word-wrap:normal;
+}
+
+
+
