@@ -18,49 +18,23 @@
 
 <script>
 $(document).ready(function(){
-	var expanded = [false, false, false];
-	
 	$(".tabs .tab-links a").on("click", function(e){
 		var currentAttrValue = $(this).attr("href");
 		$(".tabs " + currentAttrValue).show().siblings().hide(); 
 		$(this).parent("li").addClass("active").siblings().removeClass("active"); 
 		e.preventDefault();
 		});
-	
-	$( "#go1" ).click(function() {
-			buttFunc(1);
-	});
-	$( "#go2" ).click(function() {
-		buttFunc(2);
-	});
+
 	$("#close").click(function() {
 		$("#overlay").slideToggle("fast")
 		});
 	$(".clickme").click(function() {
 		$("#overlay").slideToggle("fast")
 		});
-	  function buttFunc(index)
-		{
-			if(expanded[index] == false)
-			{
-			$( "#block" + index )
-				.animate({ width: "100%" }, { queue: false, duration: 1000 })
-				expanded[index] = true;
-			$( "#go" + index ).text("Show Less..")
-			}
-		else
-			{
-			$( "#block" + index )
-				.animate({ width: "49%" }, { queue: false, duration: 1000 })
-				expanded[index] = false;	
-			$( "#go" + index ).text("Show More..")
-			}
-		}
 });
-function showDescription(name, description){
+function showDescription(){
 	  $("#overlay").slideToggle("fast");
-		 $("#top").text(name);
-		 $("#bottom").text(description);
+		alert("File successfully uploaded!")
 	  }
 </script>
 <r:layoutResources/>
@@ -81,11 +55,7 @@ function showDescription(name, description){
 		</ul>
 		<div id="overlay">
 			<button class="btn btn-default" id="close">Close X</button>
-			<div id="content">
-			</div>
-			<g:uploadForm name="myUpload">
-   				 <input type="file" name="myFile" />
-			</g:uploadForm>
+			<div id="content"></div>
 		</div>
 		
 		<g:if test="${classes}">
@@ -127,7 +97,7 @@ function showDescription(name, description){
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[id:assignment.id]}" update="content">
+								<td><g:remoteLink action="setCurrGradedAssignment" params="${[id:assignment.id]}" update="content">
 								<span class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-center">${assignment.calcGrade()}</td>
 								<td class="cell-right">${assignment.getDate()}</td>
@@ -185,7 +155,7 @@ function showDescription(name, description){
 						<g:if test="${materials}">
 							<g:each var="material" in="${materials}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:material.name, description:material.description]}" update="content">
+								<td><g:remoteLink action="setCurrMaterial" params="${[id:material.id]}" update="content">
 								<span  class="clickme">${material.name}</span></g:remoteLink></td>	
 								<td class="cell-right">${material.getDate()}</td>
 							</tr>
@@ -222,7 +192,7 @@ function showDescription(name, description){
 						<g:if test="${notGradedAssignments}">
 							<g:each var="assignment" in="${notGradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<td><g:remoteLink action="setCurrAssignment" params="${[id:assignment.id]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>								
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
@@ -259,7 +229,7 @@ function showDescription(name, description){
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
-								<td><g:remoteLink action="setCurrAssignment" params="${[name:assignment.name, description:assignment.description]}" update="content">
+								<td><g:remoteLink action="setCurrGradedAssignment" params="${[id:assignment.id]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
 								<td class="cell-center">${assignment.calcGrade()}</td>
 								<td class="cell-right">${assignment.getDate()}</td>

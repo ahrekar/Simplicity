@@ -23,7 +23,17 @@ class HomeController {
 		[assignment:assignment]
 		def name = assignment.name
 		def description = assignment.description
-        render "<h2>${name}</h2>" + '<br>' + "<p>${description}</p>"
+        render "<h2>${name}</h2>" + '<br>' + "<p>${description}</p><br><g:uploadForm name='myUpload'><input type='file' name='myFile' /><br><input class='btn btn-primary' onClick='showDescription()' type='submit' value='Upload' /></g:uploadForm>"
+	}
+	def setCurrGradedAssignment()
+	{
+		def id = params.id.toInteger()
+		def assignment = Assignment.get(id)
+		[assignment:assignment]
+		def name = assignment.name
+		def description = assignment.description
+		def grade = assignment.calcGrade()
+		render "<h2>${name}(${grade})</h2>" + '<br>' + "<p>${description}</p>"
 	}
 	def setCurrMaterial() 
 	{ 
