@@ -35,21 +35,24 @@ $(document).ready(function(){
 		  $("#overlay").slideToggle("fast");
 			alert("File successfully uploaded!")
 		  }
+function notImplemented(){
+	alert("This feature is not currently implemented");
+}
 </script>
 <r:layoutResources/>
 </head>
 
 <body id="body">
 	<div class="top">
-		<h1>Simplicity</h1>
+		<h1><a href="/simplicity/home/">Simplicity</a></h1>
 	</div>
 	<div class="tabs">
 		<ul class="tab-links">
-			<li><a href="#Communication">Communication</a></li>
-			<li><a href="#Grades">Grades</a></li>
+			<li><a onclick="notImplemented()" href="#Communication">Communication</a></li>
+			<li class="active"><a href="#Grades">Grades</a></li>
 			<li><a href="#Materials">Materials</a></li>
 			<li><a href="#Assignments">Assignments</a></li>
-			<li class="active"><a href="#Overview">Overview</a></li>
+			<li ><a href="#Overview">Overview</a></li>
 
 		</ul>
 		<div id="overlay">
@@ -61,7 +64,14 @@ $(document).ready(function(){
 		<g:if test="${course}">
 			<div class="card-div tab-content">
 
-			<div id="Overview" class="active tab">
+			<g:if test="${tab == 'overview'}">
+			<g:set var="active" value="active"/>
+			</g:if>
+			<g:else>
+			<g:set var="active" value=""/>
+			</g:else>
+
+			<div id="Overview" class="${active} tab">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">${course.name} (<g:formatNumber number="${course.calcGrade()}" format="#0.0%"/>) </h3>
@@ -98,7 +108,7 @@ $(document).ready(function(){
 							<tr>
 								<td><g:remoteLink action="setCurrGradedAssignment" params="${[id:assignment.id]}" update="content">
 								<span class="clickme">${assignment.name}</span></g:remoteLink></td>
-								<td class="cell-center">${assignment.calcGrade()}</td>
+								<td class="cell-center"><g:formatNumber number="${assignment.calcGrade()}" format="#0.0%"/></td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 							</g:each>
@@ -131,11 +141,17 @@ $(document).ready(function(){
 							</tr>
 						</g:else>
 					</table>
-					<div class="panel-footer"><g:link controller="home" action="index" id="${course.id}">Show Less...</g:link></div>
+					<div class="panel-footer"><g:link controller="home" action="index" params="[tab:'overview']">Show All Courses...</g:link></div>
 				</div>
 			</div> <%-- End Overview Tab --%>
 
-			<div id="Materials" class="tab">
+			<g:if test="${tab == 'materials'}">
+			<g:set var="active" value="active"/>
+			</g:if>
+			<g:else>
+			<g:set var="active" value=""/>
+			</g:else>
+			<div id="Materials" class="${active} tab">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">${course.name}</h3>
@@ -168,11 +184,17 @@ $(document).ready(function(){
 							<% numDisplay-- %>
 						</g:while>
 					</table>
-					<div class="panel-footer"><g:link controller="home" action="index" id="${course.id}">Show Less...</g:link></div>
+					<div class="panel-footer"><g:link controller="home" action="index" params="[tab:'materials']">Show All Courses...</g:link></div>
 				</div>
 			</div> <%-- End Materials tab --%>
 
-			<div id="Assignments" class="tab">
+			<g:if test="${tab == 'assignments'}">
+			<g:set var="active" value="active"/>
+			</g:if>
+			<g:else>
+			<g:set var="active" value=""/>
+			</g:else>
+			<div id="Assignments" class="${active} tab">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">${course.name}</h3>
@@ -202,11 +224,17 @@ $(document).ready(function(){
 							<% numDisplay-- %>
 						</g:while>
 					</table>
-					<div class="panel-footer"><g:link controller="home" action="index" id="${course.id}">Show Less...</g:link></div>
+					<div class="panel-footer"><g:link controller="home" action="index" params="[tab:'assignments']">Show All Courses...</g:link></div>
 				</div>
 			</div> <%-- End assignments tab --%>
 
-			<div id="Grades" class="tab">
+			<g:if test="${tab == 'grades'}">
+			<g:set var="active" value="active"/>
+			</g:if>
+			<g:else>
+			<g:set var="active" value=""/>
+			</g:else>
+			<div id="Grades" class="${active} tab">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">${course.name}</h3>
@@ -224,7 +252,7 @@ $(document).ready(function(){
 							<tr>
 								<td><g:remoteLink action="setCurrGradedAssignment" params="${[id:assignment.id]}" update="content">
 								<span  class="clickme">${assignment.name}</span></g:remoteLink></td>
-								<td class="cell-center">${assignment.calcGrade()}</td>
+								<td class="cell-center"><g:formatNumber number="${assignment.calcGrade()}" format="#0.0%"/></td>
 								<td class="cell-right">${assignment.getDate()}</td>
 							</tr>
 
@@ -240,7 +268,7 @@ $(document).ready(function(){
 							<% numDisplay-- %>
 						</g:while>
 					</table>
-					<div class="panel-footer"><g:link controller="home" action="index" id="${course.id}">Show Less...</g:link></div>
+					<div class="panel-footer"><g:link controller="home" action="index" params="[tab:'grades']">Show All Courses...</g:link></div>
 				</div>
 			</div> <%-- End Grades tab --%>
 				

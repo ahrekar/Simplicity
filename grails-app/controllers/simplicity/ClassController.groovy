@@ -1,7 +1,6 @@
 package simplicity
 
-
-
+import org.springframework.web.servlet.ModelAndView
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -17,7 +16,7 @@ class ClassController {
 
 	def overview(Class classInstance) {
 		
-		[course:classInstance]
+		[course:classInstance, tab:params.tab]
 		
 	}
 

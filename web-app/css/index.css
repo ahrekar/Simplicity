@@ -134,7 +134,7 @@ is why the show more does not work. We need to fix this.*?
  * Here I am adding in the code for the breakpoints.
  */
 
-@media (min-width: 700px){ /* If the window is larger than 700px */
+@media (min-width: 850px){ /* If the window is larger than 850px */
 	.panel-default br{ /* Clear breakpoints */
 		clear: both;
 	}
