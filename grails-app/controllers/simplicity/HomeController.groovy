@@ -9,7 +9,7 @@ class HomeController {
 
 		classes = Class.findAll()
 
-		classes : classes, tab:params.tab]
+		[classes : classes, tab:params.tab]
 	}
 	def findInfo(String assignmentName, Class className) {
 		def classes =[]
