@@ -205,7 +205,7 @@ function notImplemented(){
 							<th class="cell-right">Due Date</th>
 						</tr>
 						<g:set var="numDisplay" value="${4}"/>
-						<g:set var="notGradedAssignments" value="${course.getNotGraded(numDisplay)}"/>
+						<g:set var="notGradedAssignments" value="${course.getNotGraded()}"/>
 						<g:if test="${notGradedAssignments}">
 							<g:each var="assignment" in="${notGradedAssignments}">
 							<tr>
@@ -246,7 +246,7 @@ function notImplemented(){
 							<th class="cell-right">Date</th>
 						</tr>
 						<g:set var="numDisplay" value="${4}"/>
-						<g:set var="gradedAssignments" value="${course.getGraded(numDisplay)}"/>
+						<g:set var="gradedAssignments" value="${course.getGraded()}"/>
 						<g:if test="${gradedAssignments}">
 							<g:each var="assignment" in="${gradedAssignments}">
 							<tr>
